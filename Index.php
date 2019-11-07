@@ -58,7 +58,7 @@ $servicios = $servicios ->fetchAll();
             $nombre = $Sql['nombre'];
             $precio = $Sql['costo'];
             $descripcion = $Sql['descripcion'];
-            ECHO "<a class='carousel-item' href='VerProducto.php?id=$id'><img src='Upload/productos/$image'><p>$nombre<br>Precio: $precio
+            ECHO "<a class='carousel-item' href='VerProducto.php?id=$id'><img src='upload/productos/$image'><p>$nombre<br>Precio: $$precio
                 <br>Descripcion: $descripcion</p></a>";
         endforeach;
         ECHO "
@@ -85,7 +85,7 @@ $servicios = $servicios ->fetchAll();
         $nombre = $Sql['nombre'];
         $precio = $Sql['costo'];
         $descripcion = $Sql['descripcion'];
-        ECHO "<a class='carousel-item' href='VerProducto.php?id=$id'><img src='Upload/productos/$image'><p>$nombre<br>Precio: $precio
+        ECHO "<a class='carousel-item' href='VerServicio.php?id=$id'><img src='upload/servicios/$image'><p>$nombre<br>Precio: $$precio
                 <br>Descripcion: $descripcion</p></a>";
     endforeach;
     ECHO "

@@ -138,7 +138,7 @@ else{
                             Echo "<form action=\"Buscar.php\" method=\"post\" id=\"mainform2\">
                                 <div class=\"input-field inline\">
                                     <input name=\"busqueda\" id=\"busqueda\" type=\"text\" class=\"validate\">
-                                    <label for=\"busqueda\">Nombre, sinopsis, ISBN.</label>
+                                    <label for=\"busqueda\">Nombre, descripción, codigo.</label>
                                 </div>
                                 <form action=\"Buscar.php\" method=\"post\" id=\"mainform2\">
                                     <button class=\"btn-floating btn-large waves-effect waves-light blue\" type=\"submit\" form=\"mainform\"><i class=\"material-icons\">search</i></button>
