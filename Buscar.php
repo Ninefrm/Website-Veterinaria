@@ -46,8 +46,8 @@ Echo "<form action=\"Buscar.php\" method=\"post\" id=\"mainform\">
 <table class="responsive-table">
     <thead>
     <tr>
-        <th>NOMBRE DEL LIBRO</th>
-        <th>ISBN</th>
+        <th>NOMBRE DEL PRODUCTO/SERVICIO</th>
+        <th>CÓDIGO</th>
         <th>PRECIO</th>
         <th colspan="3">ACCIONES</th>
 
@@ -66,7 +66,7 @@ Echo "<form action=\"Buscar.php\" method=\"post\" id=\"mainform\">
             <?php echo "<td>". $SQLproductos['codigo'] ."</td>"; ?>
             <?php echo "<td> $". $SQLproductos['costo'] ."</td>"; ?>
             <?php echo "<td class='centrar'>"."<a href='VerProducto.php?id=".$SQLproductos['id_producto']."' class='large material-icons'>visibility</a>". "</td>"; ?>
-            <?php echo "<td class='centrar'>"."<a href='EliminarAdministrador.php?id=".$SQLproductos['id_producto']."' class='large material-icons'>delete_forever</a>". "</td>"; ?>
+<!--            --><?php //echo "<td class='centrar'>"."<a href='EliminarAdministrador.php?id=".$SQLproductos['id_producto']."' class='large material-icons'>delete_forever</a>". "</td>"; ?>
         </tr>
     <?php endforeach; ?>
 <!--    SERVICIOS-->
@@ -84,7 +84,7 @@ Echo "<form action=\"Buscar.php\" method=\"post\" id=\"mainform\">
             <?php echo "<td>". $SQLservicios['codigo'] ."</td>"; ?>
             <?php echo "<td> $". $SQLservicios['costo'] ."</td>"; ?>
             <?php echo "<td class='centrar'>"."<a href='VerServicio.php?id=".$SQLservicios['id_servicio']."' class='large material-icons'>visibility</a>". "</td>"; ?>
-            <?php echo "<td class='centrar'>"."<a href='EliminarAdministrador.php?id=".$SQLservicios['id_servicio']."' class='large material-icons'>delete_forever</a>". "</td>"; ?>
+<!--            --><?php //echo "<td class='centrar'>"."<a href='EliminarAdministrador.php?id=".$SQLservicios['id_servicio']."' class='large material-icons'>delete_forever</a>". "</td>"; ?>
         </tr>
     <?php endforeach; ?>
 </table>

@@ -5,6 +5,7 @@ $username = "ninefrmx_root";
 $password = "Samuel20";
 $mydb = "ninefrmx_veterinaria";
 $total = 0;
+$id_servicio = $_POST['id_servicio'];
 
 try{
     $conn = new PDO("mysql:host=$servername;dbname=$mydb", $username, $password);
@@ -16,12 +17,7 @@ try{
 }
 $tipo = $_SESSION['tipo'];
 $id_usr = $_SESSION['id'];
-$carrito = $conn -> prepare("
-	SELECT * FROM carro WHERE activo = '1' AND id_cliente = $id_usr");
-//Libro
-$carrito ->execute();
-$carrito = $carrito ->fetchAll();
-$cantidad = count($carrito);
+echo $id_usr;
 
 if($tipo == "Cliente"){
     $mascotas = $conn -> prepare("
@@ -36,6 +32,11 @@ if($tipo == "Administrador"){
 $mascotas ->execute();
 $mascotas = $mascotas ->fetchAll();
 
+$veterinario = $conn -> prepare("
+	SELECT * FROM veterinario");
+$veterinario ->execute();
+$veterinario = $veterinario->fetchAll();
+
 ?>
 
 
@@ -44,7 +45,7 @@ $mascotas = $mascotas ->fetchAll();
     <div class="col s12 m6">
         <div class="card blue-grey darken-1">
             <div class="card-content white-text green">
-                <span class="card-title" align='center'>PRODUCTOS EN EL CARRITO: <p></p> <?php echo $cantidad?></span>
+                <span class="card-title" align='center'>CITA A GENERAR:</span>
             </div>
         </div>
     </div>
@@ -58,32 +59,9 @@ $mascotas = $mascotas ->fetchAll();
 
         </tr>
         </thead>
-        <?php foreach ($carrito as $Sql): ?>
-            <?php
-            $id_producto = $Sql['id_producto'];
-            $productos = $conn -> prepare("
-	        SELECT * FROM producto WHERE activo = 1 AND id_producto = $id_producto");
-//Libro
-            $productos ->execute();
-            $productos = $productos ->fetchAll();
-            foreach ($productos as $SQLProductos):
-                ?>
-                <tr>
-                    <?php $str = strtoupper($SQLProductos['nombre']); echo "<td>". $str ."</td>"; ?>
-                    <?php echo "<td class='center'>". $SQLProductos['codigo'] ."</td>"; ?>
-                    <?php echo "<td> $". $SQLProductos['costo'] ."</td>"; ?>
-                    <?php $total = $total + $SQLProductos['costo']; ?>
-                    <?php echo "<td class='centrar'>"."<a href='VerProducto.php?id=".$SQLProductos['id_producto']."' class='large material-icons'>visibility</a>". "</td>"; ?>
-                    <?php echo "<td class='centrar'>"."<a href='NoComprarProducto.php?id=".$SQLProductos['id_producto']."' class='large material-icons'>delete_forever</a>". "</td>"; ?>
-                </tr>
-            <?php endforeach; ?>
-        <?php endforeach; ?>
+        <!--SERVICIOS        -->
 
-<!--SERVICIOS        -->
-
-        <?php foreach ($carrito as $Sql): ?>
-            <?php
-            $id_servicio = $Sql['id_servicio'];
+        <?php
             $productos = $conn -> prepare("
 	        SELECT * FROM servicio WHERE activo = 1 AND id_servicio = $id_servicio");
             $productos ->execute();
@@ -99,7 +77,6 @@ $mascotas = $mascotas ->fetchAll();
                     <?php echo "<td class='centrar'>"."<a href='NoComprar.php?id=".$SQLServicio['id_servicio']."' class='large material-icons'>delete_forever</a>". "</td>"; ?>
                 </tr>
             <?php endforeach; ?>
-        <?php endforeach; ?>
 
     </table>
     <br>
@@ -132,10 +109,11 @@ $mascotas = $mascotas ->fetchAll();
             <?php echo $total?>
         </p>
         <div class="row">
-            <form action="Pagar.php" method="post" id="mainform">
+            <form action="PagarServicio.php" method="post" id="mainform">
                 <td><input type="hidden" name="total" value="<?php echo  $total; ?>" type="text"></td>
+                <td><input type="hidden" name="id_servicio" value="<?php echo  $id_servicio; ?>" type="text"></td>
+                <td><input type="hidden" name="id_cliente" value="<?php echo  $id_usr; ?>" type="text"></td>
 
-                <td><input type="hidden" name="cantidad" value="<?php echo  $cantidad; ?>" type="text"></td>
                 <div class="row">
                     <div class="input-field col s6">
                         <input name="first_name" id="icon_email" type="text" class="validate" disabled value="<?php echo  $Sql['nombre']; ?>">
@@ -151,47 +129,77 @@ $mascotas = $mascotas ->fetchAll();
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s6">
-                        <td><input name="calle" value="<?php echo  $Sql['calle']; ?>" type="text"></td>
-                        <!--                    <input name="calle" type="text" class="validate" disabled value="--><?php //echo  $Sql['calle']; ?><!--">-->
-                        <label for="calle">Calle:</label>
-                    </div>
-                    <div class="input-field col s1">
-                        <td><input name="numero_domicilio" value="<?php echo  $Sql['numero_domicilio']; ?>" type="text"></td>
-                        <!--                    <input name="calle" type="text" class="validate" disabled value="--><?php //echo  $Sql['calle']; ?><!--">-->
-                        <label for="numero">Numero:</label>
-                    </div>
                     <div class="input-field col s3">
-                        <input name="colonia" id="icon_email" type="text" class="validate" value="<?php echo  $Sql['colonia']; ?>">
-                        <label for="colonia">Colonia:</label>
+                        <input name="numero_de_telefono" id="icon_email" type="text" class="validate"  value="<?php echo  $Sql['numero_de_telefono']; ?>">
+                        <label for="numero_de_telefono">Numero de telefono:</label>
                     </div>
-                    <div class="input-field col s1">
-                        <input name="codigo_postal" id="icon_email" type="text" class="validate"  value="<?php echo  $codigo_postal; ?>">
-                        <label for="codigo_postal">Codigo Postal:</label>
-                    </div>
-                    <div class="input-field col s1">
-                        <input name="telefono" id="icon_email" type="text" class="validate"  value="<?php echo  $telefono; ?>">
-                        <label for="telefono">Teléfono:</label>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input name="receta" id="icon_email" type="text" class="validate"  value="">
+                        <label for="receta">NOTA:</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s3">
-                        <input type="date" id="start" name="fecha_cita"
-                               value="<?php echo date("Y-m-d")?>"
-                               min="<?php echo date("Y-m-d")?>" max="<?php echo date("Y-m-d")?>">
+
+
+
+                        <script type="text/javascript">
+                            window.onload=function () {
+
+                                var date = new Date();
+
+                                var year = date.getFullYear();
+                                var month = date.getMonth();
+                                var day = date.getDate();
+                                var date = new Date(year, month, day);
+                                var minOne = new Date(year, month + 1, day);
+                                var maxDate;
+
+                                $('#from').datepicker({
+                                    autoClose : true,
+                                    format : 'yyyy-mm-dd',
+                                    yearRange : 1,
+                                    minDate:  date,
+                                    maxDate: minOne,
+                                    defaultDate: date,
+                                    setDefaultDate:minOne,
+                                });
+
+                            }
+                        </script>
+                        <input type="text" class="datepicker" id="from" value="from" name="fecha_cita">
+
+<!--                        <input type="date" id="start" name="fecha_cita"-->
+<!--                               value="--><?php //echo date("Y-m-d")?><!--"-->
+<!--                               min="--><?php //echo date("Y-m-d")?><!--" max="--><?php //$date = strtotime('+1 month');
+//                        echo date("Y-m-d",$date)?><!--">-->
                         <label for="start">Cita para servicios:</label>
                     </div>
                     <div class="input-field col s3">
-                        <select name="mascota">
+                        <select name="id_mascota">
                             <?php foreach ($mascotas as $Sql): $id_cliente = $Sql['id_cliente'];
-                            $id_mascota = $Sql['id_mascota'];
-                            $categoria = $Sql['categoria'];
-                            $nombre_mascota = $Sql['nombre'];
-                            ECHO "<option value = '$id_mascota'> $nombre_mascota </option>";
+                                $id_mascota = $Sql['id_mascota'];
+                                $categoria = $Sql['categoria'];
+                                $nombre_mascota = $Sql['nombre'];
+                                ECHO "<option value = '$id_mascota'> $nombre_mascota </option>";
                             endforeach;
                             ?>
                         </select>
                         <label>Mascota</label>
+                    </div>
+
+                    <div class="input-field col s3">
+                        <select name="id_veterinario">
+                            <?php foreach ($veterinario as $SqlV):
+                                $id_veterinario = $SqlV['id_veterinario'];
+                                $nombre_veterinario = $SqlV['nombre'];
+                                ECHO "<option value = '$id_veterinario'> $nombre_veterinario </option>";
+                            endforeach;
+                            ?>
+                        </select>
+                        <label>Veterinario</label>
                     </div>
                 </div>
 
@@ -205,22 +213,13 @@ $mascotas = $mascotas ->fetchAll();
                     <label>Metodo de Pago</label>
                 </div>
                 <div class="input-field col s6">
-                    <select name="envio">
-                        <option value="" disabled selected>Elegir opción</option>
-                        <option value="DHL">DHL EXPRESS (3 días) - $99</option>
-                        <option value="FEDEX">FEDEX (5 días) - $50</option>
-                        <option value="UPS">UPS (7 días habiles) - GRATIS</option>
-                    </select>
-                    <label>Metodo de Envio</label>
+
                 </div>
                 <script>
                     print(instance.getSelectedValues());
                 </script>
 
-                <form action="Pagar.php" method="post" id="mainform">
-                    <td><input type="hidden" name="id_cliente" value="<?php echo  $id_usr; ?>" type="text"></td>
-                    <button class="waves-effect waves-light btn-small green" type="submit" form="mainform" value="Submit"><i class="material-icons left">payment</i>Pagar</button>
-                </form>
+
 
                 <?php  if(!empty($errores)): ?>
                     <ul>
@@ -229,7 +228,11 @@ $mascotas = $mascotas ->fetchAll();
                 <?php  endif; ?>
 
             </form>
+
         </div>
+        <form action="PagarServicio.php" method="post" id="mainform">
+            <button class="waves-effect waves-light btn-small green" type="submit" form="mainform" value="Submit"><i class="material-icons left">payment</i>Pagar</button>
+        </form>
     <?php endforeach; ?>
 
 </div>

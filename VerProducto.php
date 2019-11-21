@@ -46,9 +46,9 @@ if(!$producto){
                     if($_SESSION['tipo']=="Administrador"){
                         $id = $Sql['id_producto'];
                         ECHO "
-                <form action=\"EditarLibro.php\" method=\"post\" id=\"EditarLibro\">
+                <form action=\"EditarProducto.php\" method=\"post\" id=\"EditarProducto\">
                         <td><input type=\"hidden\" name=\"id_producto\" value=\"$id\" type=\"text\"></td>
-                    <button class=\"waves-effect waves-light btn-small yellow\" type=\"submit\" form=\"EditarLibro\" value=\"Submit\"><i class=\"material-icons\">edit</i>Editar libro</button>
+                    <button class=\"waves-effect waves-light btn-small yellow\" type=\"submit\" form=\"EditarProducto\" value=\"Submit\"><i class=\"material-icons\">edit</i>Editar producto.</button>
                 </form>";
                     }
 
@@ -63,14 +63,14 @@ if(!$producto){
                 if(!empty($_SESSION['id'])){
                     $id = $Sql['id_producto'];
                     ECHO "
-                    <form action=\"AgregarACarrito.php\" method=\"post\" id=\"mainform\">
+                    <form action=\"AgregarCompra.php\" method=\"post\" id=\"mainform\">
                         <td><input type=\"hidden\" name=\"id_producto\" value=\"$id\" type=\"text\"></td>
                     <button class=\"waves-effect waves-light btn-small green\" type=\"submit\" form=\"mainform\" value=\"Submit\"><i class=\"material-icons left\">add_shopping_cart</i>Agregar al carrito</button>
                 </form>
                     ";
                 }else{
                     ECHO "
-                    <form action=\"AgregarACarrito.php\" method=\"post\" id=\"mainform\">
+                    <form action=\"AgregarCompra.php\" method=\"post\" id=\"mainform\">
                         <td><input type=\"hidden\" name=\"id_producto\" value=\"\" type=\"text\"></td>
                     <button class=\"waves-effect waves-light btn-small green disabled\" type=\"submit\" form=\"mainform\" value=\"Submit\"><i class=\"material-icons left\">add_shopping_cart</i>INCIA SESIÓN PARA PODER COMPRAR</button>
                 </form>

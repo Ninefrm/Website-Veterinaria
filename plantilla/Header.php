@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php session_start();
+//echo $_SERVER['REQUEST_URI'];
 ?>
 <?php
 header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
@@ -51,7 +52,7 @@ else{
 
     <!--    <link rel="stylesheet" href="CSS/Estilos.css">-->
     <link href="https://fonts.googleapis.com/css?family=Amaranth&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="/image/WebIcon.png">
+    <link rel="icon" type="image/png" href="image/WebIcon.png">
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -76,6 +77,12 @@ else{
             ECHO "<li class=\"divider\"></li>
             <li><a href=\"VerCompras.php\"><i class=\"material-icons\">store</i>Compras</a></li>
             <li class=\"divider\"></li>
+            
+            ";
+            ECHO "<li class=\"divider\"></li>
+            <li><a href=\"VerMascotas.php\"><i class=\"material-icons\">pets</i>Mascotas</a></li>
+            <li class=\"divider\"></li>
+            
             ";
             if($_SESSION['tipo'] == "Administrador"){
                 Echo "<li><a href=\"AgregarProducto.php\" title=\"Agregar Producto\"><i class=\"material-icons\">library_add</i>Agregar Producto</span></div></a></li>
@@ -132,16 +139,17 @@ else{
                     </div>
                     <div class="center">
                         <?php
-                        if($_SERVER['REQUEST_URI'] == '/Website-Libreria/Buscar.php'){
+
+                        if($_SERVER['REQUEST_URI'] == '/website-veterinaria/Buscar.php'){
 
                         }else{
-                            Echo "<form action=\"Buscar.php\" method=\"post\" id=\"mainform2\">
+                            Echo "<form action=\"Buscar.php\" method=\"post\" id=\"search\">
                                 <div class=\"input-field inline\">
                                     <input name=\"busqueda\" id=\"busqueda\" type=\"text\" class=\"validate\">
                                     <label for=\"busqueda\">Nombre, descripción, codigo.</label>
                                 </div>
-                                <form action=\"Buscar.php\" method=\"post\" id=\"mainform2\">
-                                    <button class=\"btn-floating btn-large waves-effect waves-light blue\" type=\"submit\" form=\"mainform\"><i class=\"material-icons\">search</i></button>
+                                <form action=\"Buscar.php\" method=\"post\" id=\"search\">
+                                    <button class=\"btn-floating btn-large waves-effect waves-light blue\" type=\"submit\" form=\"search\"><i class=\"material-icons\">search</i></button>
                                 </form>
                             </form>";
                         }
@@ -178,8 +186,13 @@ else{
             <li><a href=\"VerCompras.php\"><i class=\"material-icons\">store</i>Compras</a></li>
             <li class=\"divider\"></li>
             ";
+                ECHO "
+            <li><a href=\"VerMascotas.php\"><i class=\"material-icons\">pets</i>Mascotas</a></li>
+            
+            ";
                 if($_SESSION['tipo'] == "Administrador"){
-                    Echo "<li><a href=\"AgregarLibro.php\" title=\"Agregar Libro\"><i class=\"material-icons\">library_add</i>Agregar Libros</span></div></a></li>
+                    Echo "<li><a href=\"AgregarProducto.php\" title=\"Agregar Libro\"><i class=\"material-icons\">library_add</i>Agregar producto</span></div></a></li>
+
         ";
                 }
             }else{

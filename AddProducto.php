@@ -61,7 +61,7 @@ if (file($tmpName)) {
             $my_Insert_Statement = $my_Db_Connection->prepare(
                 "INSERT INTO producto VALUES
 (null,:nombre_producto,:codigo, :descripcion,:costo, :imagen,
-'0', :stock ,'1')");
+:stock, '1' ,'0')");
 
             $my_Insert_Statement ->execute(array(
             ':nombre_producto'=>$nombre_producto,

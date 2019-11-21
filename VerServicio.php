@@ -46,9 +46,9 @@ if(!$servicio){
                     if($_SESSION['tipo']=="Administrador"){
                         $id = $Sql['id_servicio'];
                         ECHO "
-                <form action=\"EditarLibro.php\" method=\"post\" id=\"EditarLibro\">
+                <form action=\"EditarServicio.php\" method=\"post\" id=\"EditarServicio\">
                         <td><input type=\"hidden\" name=\"id_servicio\" value=\"$id\" type=\"text\"></td>
-                    <button class=\"waves-effect waves-light btn-small yellow\" type=\"submit\" form=\"EditarLibro\" value=\"Submit\"><i class=\"material-icons\">edit</i>Editar libro</button>
+                    <button class=\"waves-effect waves-light btn-small yellow\" type=\"submit\" form=\"EditarServicio\" value=\"Submit\"><i class=\"material-icons\">edit</i>Editar servicio.</button>
                 </form>";
                     }
 
@@ -63,16 +63,17 @@ if(!$servicio){
                 if(!empty($_SESSION['id'])){
                     $id = $Sql['id_servicio'];
                     ECHO "
-                    <form action=\"AgregarACarrito.php\" method=\"post\" id=\"mainform\">
+                    <form action=\"GenerarCita.php\" method=\"post\" id=\"mainform\">
                         <td><input type=\"hidden\" name=\"id_servicio\" value=\"$id\" type=\"text\"></td>
-                    <button class=\"waves-effect waves-light btn-small green\" type=\"submit\" form=\"mainform\" value=\"Submit\"><i class=\"material-icons left\">add_shopping_cart</i>Agregar al carrito</button>
+                    <button class=\"waves-effect waves-light btn-small red\" type=\"submit\" form=\"mainform\" value=\"Submit\"><i class=\"material-icons left\">local_hospital
+</i>Generar cita</button>
                 </form>
                     ";
                 }else{
                     ECHO "
-                    <form action=\"AgregarACarrito.php\" method=\"post\" id=\"mainform\">
+                    <form action=\"GenerarCita.php\" method=\"post\" id=\"mainform\">
                         <td><input type=\"hidden\" name=\"id_servicio\" value=\"\" type=\"text\"></td>
-                    <button class=\"waves-effect waves-light btn-small green disabled\" type=\"submit\" form=\"mainform\" value=\"Submit\"><i class=\"material-icons left\">add_shopping_cart</i>INCIA SESIÓN PARA PODER COMPRAR</button>
+                    <button class=\"waves-effect waves-light btn-small green disabled\" type=\"submit\" form=\"mainform\" value=\"Submit\"><i class=\"material-icons left\">local_hospital</i>INCIA SESIÓN PARA PODER COMPRAR</button>
                 </form>
                     ";
                 }

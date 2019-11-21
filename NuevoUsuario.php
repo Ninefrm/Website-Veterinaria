@@ -21,11 +21,11 @@ $fecha_nac = $_POST['fecha_nac'];
 $correo_electronico  = $_POST['correo_electronico'];
 $password = $_POST['password'];
 $password = md5($password);
+$numero_de_telefono = $_POST['numero_de_telefono'];
 $calle = $_POST['calle'];
 $numero_domicilio = $_POST['numero_domicilio'];
 $colonia = $_POST['colonia'];
 $codigo_postal = $_POST['codigo_postal'];
-$numero_de_telefono = $_POST['numero_de_telefono'];
 $metodo_de_pago = $_POST['metodo_de_pago'];
 //EXISTE?
 $sql_cliente = "SELECT * FROM cliente WHERE correo_electronico = :correo_electronico";
@@ -42,8 +42,8 @@ if($resultado){
 }else{
     $my_Insert_Statement = $conn->prepare(
         "INSERT INTO cliente VALUES
-(null,:nombre_cliente,:apellido_p, :apellido_m, :fecha_nac, :correo_electronico,:password, :numero_de_telefono, :calle,:numero_domicilio,:colonia,:codigo_postal,
-:metodo_de_pago,DEFAULT,'1')");
+(null,:nombre_cliente,:apellido_p, :apellido_m, :fecha_nac, :correo_electronico,:password,:numero_de_telefono,:calle,:numero_domicilio,:colonia,:codigo_postal,
+:metodo_de_pago,DEFAULT,'Cliente')");
 
     $my_Insert_Statement ->execute(array(
         ':nombre_cliente'=> $nombre_cliente,
@@ -61,15 +61,19 @@ if($resultado){
     ));
     $existente = 0;
 }
+if(!$existente){
     ECHO "
     <script>
     alert(\"REGISTRADO.\")
     window.location.replace(\"Login.php\");
 </script>
     ";
+}else{
+    ECHO "<script>
+    window.location.replace(\"RegistroCliente.php\");
+</script>
+    ";
+}
 ?>
 
-<script>
-    window.location.replace("Login.php");
-</script>
 

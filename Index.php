@@ -13,6 +13,7 @@ try{
 }catch(PDOException $e){
     echo "Connection failed: " . $e->getMessage();
 }
+
 $productos = $conn -> prepare("
 	SELECT * FROM producto WHERE activo = 1 ORDER BY vendidos desc ");
 //Libro
