@@ -3,8 +3,8 @@
 $id_servicio = $_POST['id_servicio'];
 //Servidor
 $servername = "localhost";
-$username = "ninefrmx_root";
-$password = "Samuel20";
+$username = "root";
+$password = "";
 $mydb = "ninefrmx_veterinaria";
 
 $sql = "mysql:host=$servername;dbname=$mydb;";

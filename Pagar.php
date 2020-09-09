@@ -23,8 +23,8 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     $errores ='';
 
     $servername = "localhost";
-    $username = "ninefrmx_root";
-    $passwordb = "Samuel20";
+    $username = "root";
+    $password = "";
     $mydb = "ninefrmx_veterinaria";
 
     try{

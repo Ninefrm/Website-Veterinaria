@@ -1,8 +1,8 @@
 <?php include 'Plantilla/Header.php'; ?>
 <?php
 $servername = "localhost";
-$username = "ninefrmx_root";
-$password = "Samuel20";
+$username = "root";
+$password = "";
 $mydb = "ninefrmx_veterinaria";
 
 try{

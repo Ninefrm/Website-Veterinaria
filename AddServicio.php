@@ -1,8 +1,8 @@
 <?php
 //Servidor
 $servername = "localhost";
-$username = "ninefrmx_root";
-$password = "Samuel20";
+$username = "root";
+$password = "";
 $mydb = "ninefrmx_veterinaria";
 
 $sql = "mysql:host=$servername;dbname=$mydb;";
