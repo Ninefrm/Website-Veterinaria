@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php session_start();
+include_once 'class/class.productos.php';
+include_once 'class/class.servicios.php';
+
 //echo $_SERVER['REQUEST_URI'];
 ?>
 <?php
@@ -24,8 +27,8 @@ try{
     echo "Connection failed: " . $e->getMessage();
 }
 
-if (!empty($_SESSION['id'])){
-    $id_usr = $_SESSION['id'];
+if (!empty($_SESSION['user_id'])){
+    $id_usr = $_SESSION['user_id'];
     $carrito = $conn -> prepare("
 	SELECT * FROM carro WHERE activo = 1 AND id_cliente = $id_usr");
     //Libro
@@ -73,7 +76,7 @@ else{
     <ul id="dropdown1" class="dropdown-content">
 
         <?php
-        if(!empty($_SESSION['id'])){
+        if(!empty($_SESSION['user_id'])){
             ECHO "<li class=\"divider\"></li>
             <li><a href=\"VerCompras.php\"><i class=\"material-icons\">store</i>Compras</a></li>
             <li class=\"divider\"></li>
@@ -92,7 +95,7 @@ else{
         ";
             }
         }else{
-            Echo "<li><a href=\"RegistroCliente.php\" title=\"Nuevo cliente\"><i class=\"material-icons\">assignment_ind</i>Nuevo cliente</span></div></a></li>
+            Echo "<li><a href=\"Usuarios_add.php\" title=\"Nuevo cliente\"><i class=\"material-icons\">assignment_ind</i>Nuevo cliente</span></div></a></li>
         ";
         }
 
@@ -101,7 +104,7 @@ else{
         <!--        <li><a href="VerCompras.php"><i class="material-icons">store</i>Compras</a></li>-->
         <!--        <li class="divider"></li>-->
         <?php
-        if (!empty($_SESSION['id'])){
+        if (!empty($_SESSION['user_id'])){
             Echo "<li><a href=\"cerrar.php\" title=\"Cerrar Sesion\"><i class=\"material-icons\">power_settings_new</i>Cerrar Sesion</span></div></a></li>
                         ";
         }else{
@@ -123,7 +126,7 @@ else{
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <div class="center left">
                         <?php
-                        if (!empty($_SESSION['id'])){
+                        if (!empty($_SESSION['user_id'])){
                             $suma = count($carrito) ;
                             Echo "<li><a href=\"Pago.php\"><i class=\"material-icons\">shopping_cart</i><span class=\"new badge green\" data-badge-caption=\"En carrito\">$suma</span></div></a></li>
                         ";
@@ -159,7 +162,7 @@ else{
 
 
                     <!--                        --><?php
-                    //                        if (!empty($_SESSION['id'])){
+                    //                        if (!empty($_SESSION['user_id'])){
                     //                            $suma = count($carrito) ;
                     //                            Echo "<div class='center right'> <li><a href=\"Pago.php\"><i class=\"material-icons\">shopping_cart</i><span class=\"new badge green\" data-badge-caption=\"En carrito\">$suma</span></div></a></li></div>
                     //                        ";
@@ -181,7 +184,7 @@ else{
             <li><a href="Buscar.php"><i class="material-icons">search</i>Buscador</a></li>
 
             <?php
-            if(!empty($_SESSION['id'])){
+            if(!empty($_SESSION['user_id'])){
                 ECHO "<li class=\"divider\"></li>
             <li><a href=\"VerCompras.php\"><i class=\"material-icons\">store</i>Compras</a></li>
             <li class=\"divider\"></li>
@@ -196,14 +199,14 @@ else{
         ";
                 }
             }else{
-                Echo "<li><a href=\"RegistroCliente.php\" title=\"Nuevo cliente\"><i class=\"material-icons\">assignment_ind</i>Nuevo cliente</span></div></a></li>
+                Echo "<li><a href=\"Usuarios_add.php\" title=\"Nuevo cliente\"><i class=\"material-icons\">assignment_ind</i>Nuevo cliente</span></div></a></li>
         ";
             }
 
             ?>
 
             <?php
-            if (!empty($_SESSION['id'])){
+            if (!empty($_SESSION['user_id'])){
                 Echo "<li><a href=\"Pago.php\"><i class=\"material-icons\">shopping_cart</i><span class=\"new badge green\" data-badge-caption=\"En carrito\">$suma</span></div></a></li>
                         ";
             }else{
@@ -212,7 +215,7 @@ else{
 
             ?>
             <?php
-            if (!empty($_SESSION['id'])){
+            if (!empty($_SESSION['user_id'])){
                 Echo "<li><a href=\"cerrar.php\" title=\"Cerrar Sesion\"><i class=\"material-icons\">power_settings_new</i>Cerrar Sesion</span></div></a></li>
                         ";
             }else{

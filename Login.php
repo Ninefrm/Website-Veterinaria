@@ -1,5 +1,7 @@
 <?php session_start();
 
+include_once 'class/class.usuarios.php';
+
 if (isset($_SESSION['correo'])){
     header('Location: Index.php');
 }
@@ -11,67 +13,20 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     // $contraseña = hash('sha512', $contraseña);
     $errores ='';
 
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $mydb = "ninefrmx_veterinaria";
+    $usuario = new users();
 
-    try{
-        $conn = new PDO("mysql:host=$servername;dbname=$mydb", $username, $passwordb);
-        // set the PDO error mode to exception
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-//    echo "Connected successfully";
-    }catch(PDOException $e){
-        echo "Connection failed: " . $e->getMessage();
-    }
-
-    //Administrador
-    $sql = "SELECT * FROM administrador WHERE correo_electronico = :correo_electronico AND password= :password AND activo= '1'";
-    $sql_cliente = "SELECT * FROM cliente WHERE correo_electronico = :correo_electronico AND password= :password AND activo= '1'";
-
-    $statement = $conn -> prepare($sql);
-    $statement ->execute(array(':correo_electronico'=> $correo_electronico,':password'=> $password));
-    $resultado = $statement->fetch();
-
-    $statement_cliente = $conn -> prepare($sql_cliente);
-    $statement_cliente ->execute(array(':correo_electronico'=> $correo_electronico,':password'=> $password));
-    $resultado_cliente = $statement_cliente->fetch();
+    $resultado = $usuario->getUserToLogin($correo_electronico, $password);
+    print_r($resultado);
 
     if($resultado){
-        $all = $conn->prepare("SELECT nombre FROM administrador WHERE correo_electronico =:correo_electronico");
-        $all ->execute(array(':correo_electronico'=>$correo_electronico));
-        $nombre = $all->fetchColumn();
-        $all = $conn->prepare("SELECT id_administrador FROM administrador WHERE correo_electronico =:correo_electronico");
-        $all ->execute(array(':correo_electronico'=>$correo_electronico));
-        $id = $all->fetchColumn();
-
-        $_SESSION['correo'] = $correo_electronico;
-        $_SESSION['password'] = $password;
-        $_SESSION['nombre'] = $nombre;
-        $_SESSION['id'] = $id;
-        $tipo = "Administrador";
-        $_SESSION['tipo'] = $tipo;
+        $_SESSION['correo'] = $resultado[0]['correo_electronico'];
+        $_SESSION['password'] = $resultado[0]['password'];
+        $_SESSION['nombre'] = $resultado[0]['nombre'];
+        $_SESSION['user_id'] = $resultado[0]['USER_ID'];
+        $tipo = $resultado[0]['Tipo'];
+        $_SESSION['tipo'] = $resultado[0]['Tipo'];
         header('Location: Index.php');
     }
-    elseif ($resultado_cliente){
-        $all = $conn->prepare("SELECT nombre FROM cliente WHERE correo_electronico =:correo_electronico");
-        $all ->execute(array(':correo_electronico'=>$correo_electronico));
-        $nombre = $all->fetchColumn();
-        $all = $conn->prepare("SELECT id_cliente FROM cliente WHERE correo_electronico =:correo_electronico");
-        $all ->execute(array(':correo_electronico'=>$correo_electronico));
-        $id = $all->fetchColumn();
-
-        $_SESSION['correo_electronico'] = $correo_electronico;
-        $_SESSION['password'] = $password;
-        $_SESSION['nombre'] = $nombre;
-        $_SESSION['id'] = $id;
-        $tipo = "Cliente";
-        $_SESSION['tipo'] = $tipo;
-        header('Location: Index.php');
-    }
-
-
-
 
 //    if($resultado !==false) {
 //        $_SESSION['correo'] = $correo;
