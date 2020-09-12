@@ -2,7 +2,7 @@
 //Servidor
 $servername = "localhost";
 $username = "root";
-$password = "";
+$passwordb = "";
 $mydb = "ninefrmx_veterinaria";
 
 try{

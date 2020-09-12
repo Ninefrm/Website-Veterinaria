@@ -24,7 +24,7 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
 
     $servername = "localhost";
     $username = "root";
-    $password = "";
+    $passwordb = "";
     $mydb = "ninefrmx_veterinaria";
 
     try {

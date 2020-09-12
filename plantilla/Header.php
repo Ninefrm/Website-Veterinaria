@@ -11,8 +11,8 @@ ini_set('display_errors', 1);
 ?>
 <?php
 $servername = "localhost";
-$username = "ninefrmx_root";
-$password = "Samuel20";
+$username = "root";
+$password = "";
 $mydb = "ninefrmx_veterinaria";
 
 try{
