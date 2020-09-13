@@ -15,7 +15,7 @@ class database{
         $dbhost = 'localhost';
         $dbuser = 'root';
         $dbpass = '';
-        $dbname = 'ninefrmx_veterinaria';
+        $dbname = 'ninefrmc_veterinaria';
         $charset = 'utf8';
         $this->connection = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
         if ($this->connection->connect_error) {

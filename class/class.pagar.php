@@ -68,11 +68,14 @@ class pagar{
         endforeach;
 
         $Productos = substr($Productos,0,-1);
+        
+        $date = substr(date('m/d/Y h:i:s a', time()), -6,4);
+        $guia_de_envio = $envio . $id_cliente . $Productos . $date;
 
         $Insert = "INSERT INTO venta
         (id_cliente, id_producto, costo, numero_de_telefono, calle, numero_domicilio, colonia, codigo_postal, metodo_de_pago, guia_de_envio, activo) 
         VALUES 
-        ('$id_cliente','$Productos','$TotalT','$telefono','$calle','$numero_domicilio','$colonia','$codigo_postal','$pago','$envio','1');";
+        ('$id_cliente','$Productos','$TotalT','$telefono','$calle','$numero_domicilio','$colonia','$codigo_postal','$pago','$guia_de_envio','1');";
         
         return $this->db->query($Insert);
         

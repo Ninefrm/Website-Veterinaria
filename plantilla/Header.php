@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php session_start();
+<?php 
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+} 
 include_once 'class/class.productos.php';
 include_once 'class/class.servicios.php';
 include_once 'class/class.carrito.php';
