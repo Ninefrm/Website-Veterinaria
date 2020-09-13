@@ -5,6 +5,8 @@ include_once 'class/class.productos.php';
 include_once 'class/class.servicios.php';
 include_once 'class/class.carrito.php';
 include_once 'class/class.usuarios.php';
+include_once 'class/class.mascota.php';
+include_once 'class/class.agenda.php';
 
 //echo $_SERVER['REQUEST_URI'];
 ?>
@@ -85,7 +87,7 @@ else{
             
             ";
             ECHO "<li class=\"divider\"></li>
-            <li><a href=\"VerMascotas.php\"><i class=\"material-icons\">pets</i>Mascotas</a></li>
+            <li><a href=\"Mascota_view.php\"><i class=\"material-icons\">pets</i>Mascotas</a></li>
             <li class=\"divider\"></li>
             
             ";
@@ -151,7 +153,7 @@ else{
                             Echo "<form action=\"Buscar.php\" method=\"post\" id=\"search\">
                                 <div class=\"input-field inline\">
                                     <input name=\"busqueda\" id=\"busqueda\" type=\"text\" class=\"validate\">
-                                    <label for=\"busqueda\">Nombre, descripción, codigo.</label>
+                                    <label style='font-size:13px !important' for=\"busqueda\">Nombre, descripción, codigo.</label>
                                 </div>
                                 <form action=\"Buscar.php\" method=\"post\" id=\"search\">
                                     <button class=\"btn-floating btn-large waves-effect waves-light blue\" type=\"submit\" form=\"search\"><i class=\"material-icons\">search</i></button>
@@ -192,7 +194,7 @@ else{
             <li class=\"divider\"></li>
             ";
                 ECHO "
-            <li><a href=\"VerMascotas.php\"><i class=\"material-icons\">pets</i>Mascotas</a></li>
+            <li><a href=\"Mascota_view.php\"><i class=\"material-icons\">pets</i>Mascotas</a></li>
             
             ";
                 if($_SESSION['tipo'] == "Administrador"){

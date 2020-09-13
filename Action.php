@@ -4,6 +4,8 @@ include "class/class.productos.php";
 include "class/class.servicios.php";
 include "class/class.carrito.php";
 include "class/class.pagar.php";
+include "class/class.agenda.php";
+include "class/class.mascota.php";
 
 //var_dump($_POST);
 $action = "";
@@ -43,6 +45,32 @@ print_r($_POST);
             }else{
                 $action = "Error de compra, revisa tu carrito";
                 $href = "./Carrito_view.php";
+            }
+        }
+        if($_POST['FormID'] == "Generar_Cita"){
+            $Cita = new agenda();
+            $Cita = $Cita->addCita($_POST);
+            if($Cita){
+                $action = "Cita agendada, se le asignará automaticamente la hora.";
+                $href = "./Mascota_view.php";
+                // $Carrito = new carrito();
+                // $Carrito->LimpiarCarrito($_POST['id_cliente']);
+            }else{
+                $action = "No existen horas disponibles ese día";
+                $href = "./Index.php";
+            }
+        }
+        if($_POST['FormID'] == "Add_Mascota"){
+            $Mascota = new pet();
+            $Mascota = $Mascota->addPet($_POST);
+            if($Mascota){
+                $action = "Mascota agregada.";
+                $href = "./Mascota_view.php";
+                // $Carrito = new carrito();
+                // $Carrito->LimpiarCarrito($_POST['id_cliente']);
+            }else{
+                $action = "No fue posible agregar la mascota.";
+                $href = "./Mascota_edit.php";
             }
         }
     }

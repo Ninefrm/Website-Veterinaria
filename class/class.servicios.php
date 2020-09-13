@@ -28,6 +28,12 @@ class services{
         return $this->db->query($sql)->fetchAll();
     }
 
+    public function getNameByID($ID){
+        $sql = "SELECT nombre  FROM servicio WHERE activo = 1 AND id_servicio = '$ID';";
+        
+        return $this->db->query($sql)->fetchAll();
+    }
+
     public function printInIndex(){
         $Services = $this->getServicesByVendidos();
         ECHO "

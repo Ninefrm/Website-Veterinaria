@@ -30,7 +30,7 @@
                         $id = $Sql['id_servicio'];
                         ECHO "
                 <form action=\"EditarServicio.php\" method=\"post\" id=\"EditarServicio\">
-                        <td><input type=\"hidden\" name=\"id_servicio\" value=\"$id\" type=\"text\"></td>
+                        <td><input type=\"hidden\" name=\"id_servicio\" id=\"id_servicio\" value=\"$id\" type=\"text\"></td>
                     <button class=\"waves-effect waves-light btn-small yellow\" type=\"submit\" form=\"EditarServicio\" value=\"Submit\"><i class=\"material-icons\">edit</i>Editar servicio.</button>
                 </form>";
                     }
@@ -46,10 +46,10 @@
                 if(!empty($_SESSION['user_id'])){
                     $id = $Sql['id_servicio'];
                     ECHO "
-                    <form action=\"Cita_add.php\" method=\"post\" id=\"GenerarCita\">
+                    <form action=\"Cita_add.php\" method=\"post\">
                         <input name=\"FormID\" value=\"GenerarCita\" hidden>
                         <td><input type=\"hidden\" name=\"id_servicio\" value=\"$id\" type=\"text\"></td>
-                    <button class=\"waves-effect waves-light btn-small red\" type=\"submit\" form=\"mainform\" value=\"Submit\"><i class=\"material-icons left\">local_hospital
+                    <button class=\"waves-effect waves-light btn-small red\" type=\"submit\" value=\"Submit\"><i class=\"material-icons left\">local_hospital
                     </i>Generar cita</button>
                     </form>
                     ";
@@ -57,7 +57,7 @@
                     ECHO "
                     <form action=\"Cita_add.php\" method=\"post\" id=\"GenerarCita\">
                         <td><input type=\"hidden\" name=\"id_servicio\" value=\"\" type=\"text\"></td>
-                        <button class=\"waves-effect waves-light btn-small green disabled\" type=\"submit\" form=\"mainform\" value=\"Submit\"><i class=\"material-icons left\">local_hospital</i>INCIA SESIÓN PARA PODER COMPRAR</button>
+                        <button class=\"waves-effect waves-light btn-small green disabled\" type=\"submit\" value=\"Submit\"><i class=\"material-icons left\">local_hospital</i>INCIA SESIÓN PARA PODER COMPRAR</button>
                     </form>
                     ";
                 }
