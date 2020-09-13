@@ -7,6 +7,7 @@ include_once 'class/class.carrito.php';
 include_once 'class/class.usuarios.php';
 include_once 'class/class.mascota.php';
 include_once 'class/class.agenda.php';
+include_once 'class/class.pagar.php';
 
 //echo $_SERVER['REQUEST_URI'];
 ?>
@@ -132,7 +133,7 @@ else{
                         <?php
                         if (!empty($_SESSION['user_id'])){
                             $suma = count($carrito) ;
-                            Echo "<li><a href=\"Pago.php\"><i class=\"material-icons\">shopping_cart</i><span class=\"new badge green\" data-badge-caption=\"En carrito\">$suma</span></div></a></li>
+                            Echo "<li><a href=\"Carrito_view.php\"><i class=\"material-icons\">shopping_cart</i><span class=\"new badge green\" data-badge-caption=\"En carrito\">$suma</span></div></a></li>
                         ";
                         }else{
 
@@ -168,7 +169,7 @@ else{
                     <!--                        --><?php
                     //                        if (!empty($_SESSION['user_id'])){
                     //                            $suma = count($carrito) ;
-                    //                            Echo "<div class='center right'> <li><a href=\"Pago.php\"><i class=\"material-icons\">shopping_cart</i><span class=\"new badge green\" data-badge-caption=\"En carrito\">$suma</span></div></a></li></div>
+                    //                            Echo "<div class='center right'> <li><a href=\"Carrito_view.php\"><i class=\"material-icons\">shopping_cart</i><span class=\"new badge green\" data-badge-caption=\"En carrito\">$suma</span></div></a></li></div>
                     //                        ";
                     //                        }else{
                     //
@@ -211,7 +212,7 @@ else{
 
             <?php
             if (!empty($_SESSION['user_id'])){
-                Echo "<li><a href=\"Pago.php\"><i class=\"material-icons\">shopping_cart</i><span class=\"new badge green\" data-badge-caption=\"En carrito\">$suma</span></div></a></li>
+                Echo "<li><a href=\"Carrito_view.php\"><i class=\"material-icons\">shopping_cart</i><span class=\"new badge green\" data-badge-caption=\"En carrito\">$suma</span></div></a></li>
                         ";
             }else{
 

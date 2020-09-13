@@ -31,7 +31,7 @@ class carrito{
         if(isset($_POST['cantidad'])){
             $cantidad = $_POST['cantidad'];
         }else{
-            $cantidad = 0;
+            $cantidad = 1;
         }
         
         if(!$productoAgregado AND !$servicioAgregado){

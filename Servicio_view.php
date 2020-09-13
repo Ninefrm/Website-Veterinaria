@@ -57,7 +57,7 @@
                     ECHO "
                     <form action=\"Cita_add.php\" method=\"post\" id=\"GenerarCita\">
                         <td><input type=\"hidden\" name=\"id_servicio\" value=\"\" type=\"text\"></td>
-                        <button class=\"waves-effect waves-light btn-small green disabled\" type=\"submit\" value=\"Submit\"><i class=\"material-icons left\">local_hospital</i>INCIA SESIÓN PARA PODER COMPRAR</button>
+                        <button class=\"waves-effect waves-light btn-small green disabled\" type=\"submit\" value=\"Submit\"><i class=\"material-icons left\">local_hospital</i>INICIA SESIÓN PARA PODER COMPRAR</button>
                     </form>
                     ";
                 }

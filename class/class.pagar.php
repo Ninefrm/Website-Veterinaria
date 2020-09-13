@@ -78,7 +78,15 @@ class pagar{
         
     }
 
-    
+    public function getVentasByUserID($id_usr){
+        $sql = "SELECT * FROM venta WHERE id_cliente = $id_usr";
+        return $this->db->query($sql)->fetchAll();
+    }
+
+    public function getVentas(){
+        $sql = "SELECT * FROM venta ORDER BY id_cliente";
+        return $this->db->query($sql)->fetchAll();
+    }
 }
 
 ?>

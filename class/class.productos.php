@@ -21,6 +21,12 @@ class products{
         return $this->db->query($sql)->fetchAll();
     }
 
+    public function getNameByID($ID){
+        $sql = "SELECT nombre  FROM producto WHERE activo = 1 AND id_producto = '$ID';";
+        
+        return $this->db->query($sql)->fetchAll();
+    }
+
     public function getProductByVendidos(){
         
         $sql = "SELECT * FROM producto WHERE activo = 1 ORDER BY vendidos desc;";

@@ -34,6 +34,7 @@
 
         <?php
         $totalT = 0;
+        $total = 0;
         foreach ($getCarrito as $Sql): ?>
             <?php
             $id_producto = $Sql['id_producto'];
@@ -150,7 +151,7 @@
                     <input name="TotalT" value="<?php echo $totalT?>" hidden>
                     <input name="FormID" value="Pagar" hidden>
                     <td><input type="hidden" name="id_cliente" value="<?php echo  $id_usr; ?>" type="text"></td>
-                    <button class="waves-effect waves-light btn-small green" type="submit" value="Submit"><i class="material-icons left">payment</i>Pagar</button>
+                    <button <?php if($totalT == 0) echo "disabled"; ?> class="waves-effect waves-light btn-small green" type="submit" value="Submit"><i class="material-icons left">payment</i>Pagar</button>
                 </form>
 
                 <?php  if(!empty($errores)): ?>
