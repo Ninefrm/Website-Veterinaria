@@ -3,6 +3,7 @@ include "class/class.usuarios.php";
 include "class/class.productos.php";
 include "class/class.servicios.php";
 include "class/class.carrito.php";
+include "class/class.pagar.php";
 
 //var_dump($_POST);
 $action = "";
@@ -28,6 +29,19 @@ print_r($_POST);
                 $href = "./Carrito_view.php";
             }else if($Add == "SA"){
                 $action = "Se agrego una unidad mas del servicio a tu carrito";
+                $href = "./Carrito_view.php";
+            }
+        }
+        if($_POST['FormID'] == "Pagar"){
+            $Pagar = new pagar();
+            $Compra = $Pagar->addPago($_POST);
+            if($Compra){
+                $action = "Pago acreditado";
+                $href = "./Compras_view.php";
+                $Carrito = new carrito();
+                $Carrito->LimpiarCarrito($_POST['id_cliente']);
+            }else{
+                $action = "Error de compra, revisa tu carrito";
                 $href = "./Carrito_view.php";
             }
         }

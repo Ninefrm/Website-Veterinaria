@@ -3,6 +3,8 @@
 <?php session_start();
 include_once 'class/class.productos.php';
 include_once 'class/class.servicios.php';
+include_once 'class/class.carrito.php';
+include_once 'class/class.usuarios.php';
 
 //echo $_SERVER['REQUEST_URI'];
 ?>

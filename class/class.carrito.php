@@ -56,6 +56,12 @@ class carrito{
         
     }
 
+    public function getCantidad($id){
+        $sql = "SELECT * FROM carro WHERE activo = 1 AND id_cliente = '$id';";
+        
+        return $this->db->query($sql)->numRows();
+    }
+
     public function getCarrito($id){
         
         $sql = "SELECT * FROM carro WHERE activo = 1 AND id_cliente = '$id';";
@@ -87,6 +93,12 @@ class carrito{
     public function updateCarritoByService($id, $id_servicio){
         
         $sql = "UPDATE carro SET cantidad=cantidad+1 WHERE activo = 1 AND id_cliente = '$id' AND id_servicio = '$id_servicio';";
+        
+        return $this->db->query($sql);
+    }
+
+    public function LimpiarCarrito($id){
+        $sql = "UPDATE carro SET activo = 0 WHERE activo = 1 AND id_cliente = '$id';";
         
         return $this->db->query($sql);
     }
