@@ -10,8 +10,104 @@ class services{
         $this->db = new database();
     }
 
-    public function addServices(){
+    public function addService(){
+        if(isset($_POST['nombre'])){
+            $nombre = $_POST['nombre'];
+        }else{
+            $Mensaje = "Faltó el nombre del servicio";
+            return $Mensaje;
+        }
+        if(isset($_POST['descripcion'])){
+            $descripcion = $_POST['descripcion'];
+        }else{
+            $Mensaje = "Faltó la descripción del servicio";
+            return $Mensaje;
+        }
+        if(isset($_POST['costo'])){
+            $costo = $_POST['costo'];
+        }else{
+            $Mensaje = "Faltó el costo del servicio";
+            return $Mensaje;
+        }
+        if(isset($_POST['stock'])){
+            $stock = $_POST['stock'];
+        }else{
+            $stock = 0;
+        }
+        if(isset($_POST['codigo'])){
+            $codigo = $_POST['codigo'];
+        }else{
+            $Mensaje = "Faltó el codigo del servicio";
+            return $Mensaje;
+        }
+        if(isset($_FILES['ImageToUpload']['name'])){
+            $ImageToUpload = $_FILES['ImageToUpload']['name'];
+        }else{
+            $ImageToUpload = 0;
+        }
 
+        $Insert = "INSERT INTO 
+        servicio
+        (nombre, codigo, descripcion, costo, imagen, stock, activo, vendidos) 
+        VALUES 
+        ('$nombre','$codigo','$descripcion','$costo','$ImageToUpload','$stock','1','0');";
+
+        return $this->db->query($Insert);
+    }
+
+    public function updateService(){
+
+        $id_servicio = $_POST['servicio_id'];
+
+        if(isset($_POST['nombre'])){
+            $nombre = $_POST['nombre'];
+        }else{
+            $nombre = 0;
+        }
+        if(isset($_POST['descripcion'])){
+            $descripcion = $_POST['descripcion'];
+        }else{
+            $descripcion = 0;
+        }
+        if(isset($_POST['costo'])){
+            $costo = $_POST['costo'];
+        }else{
+            $costo = 0;
+        }
+        if(isset($_POST['stock'])){
+            $stock = $_POST['stock'];
+        }else{
+            $stock = 0;
+        }
+        if(isset($_POST['codigo'])){
+            $codigo = $_POST['codigo'];
+        }else{
+            $codigo = 0;
+        }
+        if(isset($_FILES['ImageToUpload']['name'])){
+            $ImageToUpload = $_FILES['ImageToUpload']['name'];
+            echo $ImageToUpload;
+        }else{
+            $ImageToUpload = $_POST['imagen'];
+        }
+
+        if($ImageToUpload == ""){
+            $ImageToUpload = $_POST['imagen'];    
+        }
+
+        $Insert = "UPDATE 
+        servicio 
+        SET 
+        nombre='$nombre',
+        codigo='$codigo',
+        descripcion='$descripcion',
+        costo='$costo',
+        imagen='$ImageToUpload',
+        stock='$stock'
+        WHERE 
+        id_servicio = '$id_servicio';";
+
+        return $this->db->query($Insert);
     }
 
     public function getServicioByID($ID)

@@ -29,7 +29,7 @@
                     if($_SESSION['perfil']=="Administrador"){
                         $id = $Sql['id_servicio'];
                         ECHO "
-                <form action=\"EditarServicio.php\" method=\"post\" id=\"EditarServicio\">
+                <form action=\"Servicio_edit.php\" method=\"post\" id=\"EditarServicio\">
                         <td><input type=\"hidden\" name=\"id_servicio\" id=\"id_servicio\" value=\"$id\" type=\"text\"></td>
                     <button class=\"waves-effect waves-light btn-small yellow\" type=\"submit\" form=\"EditarServicio\" value=\"Submit\"><i class=\"material-icons\">edit</i>Editar servicio.</button>
                 </form>";

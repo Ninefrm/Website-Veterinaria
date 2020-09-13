@@ -72,7 +72,7 @@ else{
             if($perfil == "Administrador"){
                 Echo "<li><a href=\"Producto_edit.php\" title=\"Agregar Producto\"><i class=\"material-icons\">library_add</i>Agregar Producto</span></div></a></li>
         ";
-                Echo "<li><a href=\"AgregarServicio.php\" title=\"Agregar Servicio\"><i class=\"material-icons\">library_add</i>Agregar Servicio</span></div></a></li>
+                Echo "<li><a href=\"Servicio_edit.php\" title=\"Agregar Servicio\"><i class=\"material-icons\">library_add</i>Agregar Servicio</span></div></a></li>
             <li class=\"divider\"></li>
         ";
             }

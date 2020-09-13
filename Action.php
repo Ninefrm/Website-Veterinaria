@@ -117,6 +117,50 @@ print_r($_POST);
                 }
             }
         }
+        if($_POST['FormID'] == "Service_edit"){
+            $Servicio = new services();
+            if($_POST['servicio_id'] == 0){
+                $Servicio = $Servicio->addService($_POST);
+                if($Servicio){
+                    $dir_subida = './upload/servicios/';
+                    $fichero_subido = $dir_subida . basename($_FILES['ImageToUpload']['name']);
+
+                    if (move_uploaded_file($_FILES['ImageToUpload']['tmp_name'], $fichero_subido)) {
+                        $action = "Servicio agregado con imagen.";
+                        $href = "./Index.php";
+                    } else {
+                        $action = "Servicio agregado sin imagen.";
+                        $href = "./Index.php";
+                    }
+                    print_r($_FILES);
+                    
+
+                }else{
+                    $action = "No fue posible agregar el Servicio.";
+                    $href = "./Servicio_edit.php";
+                }
+            }else{
+
+                $Servicio = $Servicio->updateService($_POST);
+                if($Servicio){
+                    $dir_subida = './upload/servicios/';
+                    $fichero_subido = $dir_subida . basename($_FILES['ImageToUpload']['name']);
+
+                    if (move_uploaded_file($_FILES['ImageToUpload']['tmp_name'], $fichero_subido)) {
+                        $action = "Servicio actualizado, se actualizó la imagen.";
+                        $href = "./Servicio_view.php?id=".$_POST['servicio_id']."";
+                    } else {
+                        $action = "Servicio actualizado, no se actualizó la imagen.";
+                        $href = "./Servicio_view.php?id=".$_POST['servicio_id']."";
+                    }
+                    print_r($_FILES);
+                    
+                }else{
+                    $action = "No fue posible editar el servicio.";
+                    $href = "./Servicio_view.php?id=".$_POST['servicio_id']."";
+                }
+            }
+        }
     }
 
 ?>

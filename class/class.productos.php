@@ -89,6 +89,9 @@ class products{
         }else{
             $ImageToUpload = $_POST['imagen'];
         }
+        if($ImageToUpload == ""){
+            $ImageToUpload = $_POST['imagen'];    
+        }
 
         $Insert = "UPDATE 
         producto 
