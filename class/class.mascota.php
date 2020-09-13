@@ -75,6 +75,26 @@ class pet{
         return $this->db->query($sql)->fetchAll();
     }
 
+    public function getPetByIDToADM($id_mascota)
+    {
+        $sql = "SELECT 
+        id_mascota, 
+        m.id_cliente,
+        u.nombre AS nombre_cliente, 
+        m.nombre, 
+        m.fecha_nac, 
+        fecha_vac, 
+        categoria, 
+        raza, color, 
+        peso, 
+        m.activo
+        FROM mascota m
+        INNER JOIN users u ON m.id_cliente = u.USER_ID
+        WHERE m.activo = 1 AND id_mascota = '$id_mascota';";
+        
+        return $this->db->query($sql)->fetchAll();
+    }
+
     public function getPets(){
         $sql = "SELECT 
         id_mascota, 

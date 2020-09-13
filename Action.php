@@ -161,6 +161,19 @@ print_r($_POST);
                 }
             }
         }
+        if($_POST['FormID'] == "Receta_edit"){
+            $Cita = new agenda();
+            $Cita = $Cita->updateCita($_POST);
+            if($Cita){
+                $action = "Receta actualizada.";
+                $href = "./Mascota_edit.php?id=".$_POST['mascota_id']."";
+                // $Carrito = new carrito();
+                // $Carrito->LimpiarCarrito($_POST['id_cliente']);
+            }else{
+                $action = "Receta no actualizada.";
+                $href = "./Mascota_edit.php?id=".$_POST['mascota_id']."";
+            }
+        }
     }
 
 ?>

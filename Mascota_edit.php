@@ -8,7 +8,12 @@ if(isset($_GET['id'])){
     $id_mascota = $_GET['id'];
 
     $Mascotas = new pet();
-    $mascotas = $Mascotas->getPetByID($id_usr, $id_mascota);
+    if($tipo =="Administrador"){
+        $mascotas = $Mascotas->getPetByIDToADM($id_mascota);
+    }else{
+        $mascotas = $Mascotas->getPetByID($id_usr, $id_mascota);
+    }
+    
 
     $Agenda = new agenda();
     $GetCitas = $Agenda->getCitaByPetID($id_mascota);
@@ -53,6 +58,10 @@ if(isset($_GET['id'])){
             <?php ECHO "<td> $html </td>" ?>
             <?php $str = strtoupper($Sql['nombre']); echo "<td>". $str ."</td>"; ?>
             <?php echo "<td>". $Sql['fecha_nac'] ."</td>"; ?>
+            <?php if($tipo=="Administrador"){
+                ECHO "<td>".$Sql['nombre_cliente']."</td>";
+            }
+            ?>
             <?php echo "<td>". $Sql['fecha_vac'] ."</td>"; ?>
             <?php echo "<td>". $Sql['peso'] ." kg </td>"; ?>
             <?php echo "<td>". $Sql['raza'] ."</td>"; ?>
@@ -77,17 +86,37 @@ if(isset($_GET['id'])){
                 <th>FECHA DE CITA</th>
                 <th>METODO DE PAGO</th>
                 <th>TOTAL</th>
-                <th>ANOTACIONES</th>
+                <th>RECETA MEDICA</th>
                 <th>STATUS</th>
             </tr>
         </thead>
         <?php foreach ($GetCitas as $Sql): ?>
             <td> <?php echo ($Servicio->getNameByID($Sql['id_servicio'])[0]['nombre']) ?> </td>
-            <td> <?php echo $Sql['id_medico'] ?> </td>
+            <td> Principal </td>
+            <!-- <td> <?php echo $Sql['id_medico'] ?> </td> -->
             <td> <?php echo $Sql['cita'] ?> </td>
             <td> <?php echo $Sql['pago'] ?> </td>
-            <td> <?php echo $Sql['total'] ?> </td>
-            <td> <?php echo $Sql['receta'] ?> </td>
+            <td> $<?php echo $Sql['total'] ?> </td>
+            <?php if($tipo == "Administrador"){ ?>
+                <td> 
+                <form action="Action.php" method="post" enctype="multipart/form-data" >
+                    <input name="FormID" value="Receta_edit" hidden>
+                    <input name="cita_id" value="<?php echo $Sql['historial_clinico_id'] ?>" hidden>
+                    <input name="mascota_id" value="<?php echo $id_mascota ?>" hidden>
+                    <input value='<?php echo $Sql['receta'] ?>' name='receta'> 
+                    <select name='status'>
+                        <option <?php if($Sql['status'] == 1) echo "selected"; ?> value='1'> Sin revisar </option>
+                        <option <?php if($Sql['status'] == 2) echo "selected"; ?> value='2'> En revisión </option>
+                        <option <?php if($Sql['status'] == 3) echo "selected"; ?> value='3'> Revisión completa </option>
+                    </select>
+                    <button class="waves-effect waves-light btn-small blue right" type="submit" value="Submit"><i class="material-icons">edit</i>Recetar</button>
+                </form>
+                </td>
+            <?php }else{ ?>
+                <td> <?php echo $Sql['receta'] ?> </td>
+            <?php } ?>
+            
+
             <?php
                 if($Sql['status']==1) {
 

@@ -72,6 +72,18 @@ class agenda{
         return $this->db->query($sql)->fetchAll();
     }
 
+    public function updateCita($Array){
+        $Receta = $_POST['receta'];
+        $Cita_id = $_POST['cita_id'];
+        $Status = $_POST['status'];
+        $Update = "UPDATE historial_clinico 
+        SET
+        receta='$Receta',status='$Status'
+        WHERE 
+        historial_clinico_id = '$Cita_id'";
+        return $this->db->query($Update);
+    }
+
     
 }
 
