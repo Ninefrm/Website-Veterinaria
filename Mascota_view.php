@@ -3,10 +3,15 @@
 
 $id_usr = $_SESSION['user_id'];
 $tipo = $_SESSION['perfil'];
-
 $Mascotas = new pet();
-$mascotas = $Mascotas->getPetByUserID($id_usr);
 
+
+if($tipo == "Cliente"){
+    $mascotas = $Mascotas->getPetByUserID($id_usr);
+}
+if($tipo == "Administrador"){
+    $mascotas = $Mascotas->getPets();
+}
 ?>
 
 
@@ -57,6 +62,7 @@ $mascotas = $Mascotas->getPetByUserID($id_usr);
             <?php ECHO "<td> $html </td>" ?>
             <?php $str = strtoupper($Sql['nombre']); echo "<td>". $str ."</td>"; ?>
             <?php echo "<td>". $Sql['fecha_nac'] ."</td>"; ?>
+            <?php if($tipo == "Administrador") echo "<td>". $Sql['nombre_cliente'] ."</td>"; ?>
             <?php echo "<td>". $Sql['fecha_vac'] ."</td>"; ?>
             <?php echo "<td>". $Sql['peso'] ." kg </td>"; ?>
             <?php echo "<td>". $Sql['raza'] ."</td>"; ?>

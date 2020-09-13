@@ -73,6 +73,50 @@ print_r($_POST);
                 $href = "./Mascota_edit.php";
             }
         }
+        if($_POST['FormID'] == "Product_edit"){
+            $Producto = new products();
+            if($_POST['product_id'] == 0){
+                $Producto = $Producto->addProduct($_POST);
+                if($Producto){
+                    $dir_subida = './upload/productos/';
+                    $fichero_subido = $dir_subida . basename($_FILES['ImageToUpload']['name']);
+
+                    if (move_uploaded_file($_FILES['ImageToUpload']['tmp_name'], $fichero_subido)) {
+                        $action = "Producto agregado con imagen.";
+                        $href = "./Index.php";
+                    } else {
+                        $action = "Producto agregado sin imagen.";
+                        $href = "./Index.php";
+                    }
+                    // print_r($_FILES);
+                    
+
+                }else{
+                    $action = "No fue posible agregar el producto.";
+                    $href = "./Producto_edit.php";
+                }
+            }else{
+
+                $Producto = $Producto->updateProduct($_POST);
+                if($Producto){
+                    $dir_subida = './upload/productos/';
+                    $fichero_subido = $dir_subida . basename($_FILES['ImageToUpload']['name']);
+
+                    if (move_uploaded_file($_FILES['ImageToUpload']['tmp_name'], $fichero_subido)) {
+                        $action = "Producto actualizado, se actualizó la imagen.";
+                        $href = "./Producto_view.php?id=".$_POST['product_id']."";
+                    } else {
+                        $action = "Producto actualizado, no se actualizó la imagen.";
+                        $href = "./Producto_view.php?id=".$_POST['product_id']."";
+                    }
+                    // print_r($_FILES);
+                    
+                }else{
+                    $action = "No fue posible editar el producto.";
+                    $href = "./Producto_view.php?id=".$_POST['product_id']."";
+                }
+            }
+        }
     }
 
 ?>
