@@ -1,8 +1,13 @@
 <?php
 include "class/class.usuarios.php";
+include "class/class.productos.php";
+include "class/class.servicios.php";
+include "class/class.carrito.php";
 
 //var_dump($_POST);
 $action = "";
+$href = "./Index.php";
+print_r($_POST);
     if(isset($_POST['FormID'])){
         //    Register
         if($_POST['FormID'] == "register"){
@@ -10,6 +15,20 @@ $action = "";
             if($register->addUsers($_POST)){
                 $action = "Registered";
                 $href = "./Index.php";
+            }
+        }
+        if($_POST['FormID'] == "carrito"){
+            $carrito = new carrito();
+            $Add = $carrito->addCarrito($_POST);
+            if($Add == "I"){
+                $action = "Se agrego a tu carrito";
+                $href = "./Carrito_view.php";
+            }else if($Add == "PA"){
+                $action = "Se agrego una unidad mas del producto a tu carrito";
+                $href = "./Carrito_view.php";
+            }else if($Add == "SA"){
+                $action = "Se agrego una unidad mas del servicio a tu carrito";
+                $href = "./Carrito_view.php";
             }
         }
     }

@@ -23,8 +23,10 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         $_SESSION['password'] = $resultado[0]['password'];
         $_SESSION['nombre'] = $resultado[0]['nombre'];
         $_SESSION['user_id'] = $resultado[0]['USER_ID'];
-        $tipo = $resultado[0]['Tipo'];
-        $_SESSION['tipo'] = $resultado[0]['Tipo'];
+        if ($resultado[0]['tipo'] == 1) $tipo = "Cliente";
+        if ($resultado[0]['tipo'] == 3) $tipo = "Administrador";
+        $_SESSION['tipo'] = $resultado[0]['tipo'];
+        $_SESSION['perfil'] = $tipo;
         header('Location: Index.php');
     }
 

@@ -14,6 +14,13 @@ class products{
 
     }
 
+    public function getProductoByID($ID)
+    {
+        $sql = "SELECT * FROM producto WHERE activo = 1 AND id_producto = '$ID';";
+        
+        return $this->db->query($sql)->fetchAll();
+    }
+
     public function getProductByVendidos(){
         
         $sql = "SELECT * FROM producto WHERE activo = 1 ORDER BY vendidos desc;";
@@ -39,7 +46,7 @@ class products{
                 $nombre = $Sql['nombre'];
                 $precio = $Sql['costo'];
                 $descripcion = $Sql['descripcion'];
-                ECHO "<a class='carousel-item' href='VerProducto.php?id=$id'><img src='upload/productos/$image'><p>$nombre<br>Precio: $$precio
+                ECHO "<a class='carousel-item' href='Producto_view.php?id=$id'><img src='upload/productos/$image'><p>$nombre<br>Precio: $$precio
                     <br>Descripcion: $descripcion</p></a>";
             endforeach;
             ECHO "
@@ -47,6 +54,7 @@ class products{
         </article> 
         ";
     }
+    
 
     
 }

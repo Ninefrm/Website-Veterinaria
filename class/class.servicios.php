@@ -14,6 +14,13 @@ class services{
 
     }
 
+    public function getServicioByID($ID)
+    {
+        $sql = "SELECT * FROM servicio WHERE activo = 1 AND id_servicio = '$ID';";
+        
+        return $this->db->query($sql)->fetchAll();
+    }
+
     public function getServicesByVendidos(){
         
         $sql = "SELECT * FROM servicio WHERE activo = 1 ORDER BY vendidos desc;";
@@ -39,7 +46,7 @@ class services{
                     $nombre = $Sql['nombre'];
                     $precio = $Sql['costo'];
                     $descripcion = $Sql['descripcion'];
-                    ECHO "<a class='carousel-item' href='VerServicio.php?id=$id'><img src='upload/servicios/$image'><p>$nombre<br>Precio: $$precio
+                    ECHO "<a class='carousel-item' href='Servicio_view.php?id=$id'><img src='upload/servicios/$image'><p>$nombre<br>Precio: $$precio
                             <br>Descripcion: $descripcion</p></a>";
                 endforeach;
         ECHO "
