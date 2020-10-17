@@ -66,43 +66,43 @@
 
             </div>
             <div class="row">
-                <div class="col s6"><h2 class="mayusculas"><?php
+                <div class="col s6"><h2 class="mayusculas" id='text-standarized'><?php
                         $str = strtoupper($Sql['nombre']);
                         echo "<td>". $str. "</td>"; ?>.</h2></div>
             </div>
             <table class="striped">
                 <tr>
-                    <th>Descripcion:</th>
-                    <th><?php echo "<td>". $Sql['descripcion']. "</td>"; ?></th>
+                    <th id='text-standarized'>Descripcion:</th>
+                    <th><?php echo "<td id='text-standarized'>". $Sql['descripcion']. "</td>"; ?></th>
                 </tr>
             </table>
             <div class="row ">
                 <div class="col s4 m4">
                     <div class="center promo promo-example">
-                        <i class="material-icons">attach_money</i>
-                        <p class="promo-caption">Costo:</p>
-                        <p class="light center">$<?php echo "<td>". $Sql['costo']. "</td>"; ?></p>
+                        <i class="material-icons" id='icons-standarized'>attach_money</i>
+                        <p class="promo-caption" id='text-standarized'>Costo:</p>
+                        <p class="light center" id='text-standarized'>$<?php echo "<td>". $Sql['costo']. "</td>"; ?></p>
                     </div>
                 </div>
                 <div class="col s4 m4">
                     <div class="center promo promo-example">
-                        <i class="material-icons">dashboard</i>
-                        <p class="promo-caption">En almacen:</p>
-                        <p class="light center"><?php echo "<td>". $Sql['stock']. "</td>"; ?></p>
+                        <i class="material-icons" id='icons-standarized'>dashboard</i>
+                        <p class="promo-caption" id='text-standarized'>En almacen:</p>
+                        <p class="light center" id='text-standarized'><?php echo "<td>". $Sql['stock']. "</td>"; ?></p>
                     </div>
                 </div>
                 <div class="col s4 m4">
                     <div class="center promo promo-example">
-                        <i class="material-icons">code</i>
-                        <p class="promo-caption">Codigo:</p>
-                        <p class="light center"><?php echo "<td>". $Sql['codigo']. "</td>"; ?></p>
+                        <i class="material-icons" id='icons-standarized'>code</i>
+                        <p class="promo-caption" id='text-standarized'>Codigo:</p>
+                        <p class="light center" id='text-standarized'><?php echo "<td>". $Sql['codigo']. "</td>"; ?></p>
                     </div>
                 </div>
             </div>
         <?php endforeach; ?>
 
     </div>
-    <a class='waves-effect waves-light btn-large' onclick="goBack()"><i class="material-icons">arrow_back</i></a>
+    <a class='waves-effect waves-light btn-large' onclick="goBack()" id='section-header'><i class="material-icons" id='icons-standarized'>arrow_back</i></a>
     <script>
         function goBack() {
             window.history.back();

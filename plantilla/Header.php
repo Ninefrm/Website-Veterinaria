@@ -120,7 +120,7 @@ else{
                         ?>
                     </div>
                     <div class="center right">
-                        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1"><i class="material-icons right">view_module</i></a></li>
+                        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1"><i class="material-icons right" id='icons-standarized'>view_module</i></a></li>
 
                     </div>
                     <div class="center">
@@ -132,10 +132,10 @@ else{
                             Echo "<form action=\"Buscar.php\" method=\"post\" id=\"search\">
                                 <div class=\"input-field inline\">
                                     <input name=\"busqueda\" id=\"busqueda\" type=\"text\" class=\"validate\">
-                                    <label style='font-size:13px !important' for=\"busqueda\">Nombre, descripción, codigo.</label>
+                                    <label style='font-size:13px !important' for=\"busqueda\" id='text-standarized'>Nombre, descripción, codigo.</label>
                                 </div>
                                 <form action=\"Buscar.php\" method=\"post\" id=\"search\">
-                                    <button class=\"btn-floating btn-large waves-effect waves-light blue\" type=\"submit\" form=\"search\"><i class=\"material-icons\">search</i></button>
+                                    <button class=\"btn-floating btn-large waves-effect waves-light\" type=\"submit\" form=\"search\"><i class=\"material-icons\" id='icons-standarized'>search</i></button>
                                 </form>
                             </form>";
                         }

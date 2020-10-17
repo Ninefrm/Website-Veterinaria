@@ -132,8 +132,8 @@ class products{
         $Products = $this->getProductByVendidos();
         ECHO "
         <div class=\"col s12 m6\">
-            <div class=\"card blue-grey darken-1\">
-                <div class=\"card-content white-text\">
+            <div class=\"card\" id='section-header'>
+                <div class=\"card-content\">
                     <span class=\"card-title\" align='center'>PRODUCTOS</span>
                 </div>
             </div>
@@ -146,7 +146,7 @@ class products{
                 $nombre = $Sql['nombre'];
                 $precio = $Sql['costo'];
                 $descripcion = $Sql['descripcion'];
-                ECHO "<a class='carousel-item' href='Producto_view.php?id=$id'><img src='upload/productos/$image'><p>$nombre<br>Precio: $$precio
+                ECHO "<a class='carousel-item' href='Producto_view.php?id=$id'><img src='upload/productos/$image'><p id='text-standarized'>$nombre<br>Precio: $$precio
                     <br>Descripcion: $descripcion</p></a>";
             endforeach;
             ECHO "

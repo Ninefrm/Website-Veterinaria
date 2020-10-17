@@ -134,8 +134,8 @@ class services{
         $Services = $this->getServicesByVendidos();
         ECHO "
         <div class=\"col s12 m6\">
-            <div class=\"card blue-grey darken-1\">
-                <div class=\"card-content white-text\">
+            <div class=\"card\" id='section-header'>
+                <div class=\"card-content\">
                     <span class=\"card-title\" align='center'>SERVICIOS</span>
                 </div>
             </div>
@@ -148,7 +148,7 @@ class services{
                     $nombre = $Sql['nombre'];
                     $precio = $Sql['costo'];
                     $descripcion = $Sql['descripcion'];
-                    ECHO "<a class='carousel-item' href='Servicio_view.php?id=$id'><img src='upload/servicios/$image'><p>$nombre<br>Precio: $$precio
+                    ECHO "<a class='carousel-item' href='Servicio_view.php?id=$id'><img src='upload/servicios/$image'><p id='text-standarized'>$nombre<br>Precio: $$precio
                             <br>Descripcion: $descripcion</p></a>";
                 endforeach;
         ECHO "
