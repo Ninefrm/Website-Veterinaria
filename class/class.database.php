@@ -143,15 +143,12 @@ class database{
     {
         $Columns = $this->query->result_metadata();
         $Columns = $Columns->fetch_fields();
-        $statementParams = '';
+        $Names = [];
         foreach($Columns as $field){
-            if(empty($statementParams)){
-                $statementParams.=$field->name;
-            }else{
-                $statementParams.=$field->name;
-            }
+            $Name = str_replace("_"," ", $field->name);
+            array_push($Names, $Name);
         }
-        return $statementParams;
+        return $Names;
     }
 
 }
