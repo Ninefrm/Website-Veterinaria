@@ -22,7 +22,7 @@ if($tipo == "Administrador"){
 
     <div class="col s12 m6">
         <div class="card blue-grey darken-1">
-            <div class="card-content white-text green">
+            <div class="card-content white-text green" id='section-header'>
                 <span class="card-title" align='center'>PRODUCTOS COMPRADOS</span>
             </div>
         </div>
@@ -30,15 +30,15 @@ if($tipo == "Administrador"){
     <table class="responsive-table">
         <thead>
         <tr>
-            <th>NOMBRE DEL PRODUCTO/SERVICIO</th>
-            <th>CODIGO</th>
+            <th id='text-standarized'>NOMBRE DEL PRODUCTO/SERVICIO</th>
+            <th id='text-standarized'>CODIGO</th>
             <?php if($tipo=="Administrador"){
-                ECHO "<th>CLIENTE</th>";
+                ECHO "<th id='text-standarized'>CLIENTE</th>";
             }
             ?>
-            <th>GUIA DE ENVIO</th>
-            <th>PRECIO</th>
-            <th colspan="3">ACCIONES</th>
+            <th id='text-standarized'>GUIA DE ENVIO</th>
+            <th id='text-standarized'>PRECIO</th>
+            <th colspan="3" id='text-standarized'>ACCIONES</th>
 
         </tr>
         </thead>
@@ -62,7 +62,7 @@ if($tipo == "Administrador"){
                     }if($Sql['activo']==3){
                         $color = "green";
                     }
-                    echo "<tr><td>". $str ."</td><td>$codigo</td><td>$guia</td><td>$precio</td><td><button class='waves-effect waves-light btn-small $color'><i class='material-icons'>announcement</i></button></td></tr>"; 
+                    echo "<tr><td id='text-standarized'>". $str ."</td><td id='text-standarized'>$codigo</td><td id='text-standarized'>$guia</td><td id='text-standarized'>$precio</td><td><button class='waves-effect waves-light btn-small $color'><i class='material-icons'>announcement</i></button></td></tr>"; 
                 endforeach;
             }else{
                 foreach($productos as $producto):
@@ -77,7 +77,7 @@ if($tipo == "Administrador"){
                     }if($Sql['activo']==3){
                         $color = "green";
                     }
-                    echo "<tr><td>". $str ."</td><td>$codigo</td><td>$id_cliente</td><td>$guia</td><td>$precio</td><td><button class='waves-effect waves-light btn-small $color'><i class='material-icons'>announcement</i></button></td></tr>"; 
+                    echo "<tr><td id='text-standarized'>". $str ."</td><td id='text-standarized'>$codigo</td><td id='text-standarized'>$id_cliente</td><td id='text-standarized'>$guia</td><td id='text-standarized'>$precio</td><td><button class='waves-effect waves-light btn-small $color'><i class='material-icons'>announcement</i></button></td></tr>"; 
                 endforeach;
             }
 

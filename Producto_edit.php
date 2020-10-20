@@ -40,7 +40,7 @@
                 <div class="col s6 left">
                     <div class="file-field input-field">
                         <div class="btn">
-                            <span>IMAGEN</span>
+                            <span id='section-header'>IMAGEN</span>
                             <input type="file" name="ImageToUpload">
                         </div>
                         <div class="file-path-wrapper">
@@ -53,36 +53,36 @@
                     <div class="col s6">
                         <?php
                             $str = strtoupper($Sql['nombre']);
-                            echo "<input value='". $str. "' name='nombre'>"; 
+                            echo "<input value='". $str. "' name='nombre' id='text-standarized'>"; 
                         ?>
                     </div>
                 </div>
                 <table class="striped">
                     <tr>
-                        <th>Descripcion:</th>
-                        <th><?php echo "<input value='". $Sql['descripcion']. "' name='descripcion'>"; ?></th>
+                        <th id='text-standarized'>Descripcion:</th>
+                        <th><?php echo "<input value='". $Sql['descripcion']. "' name='descripcion' id='text-standarized'>"; ?></th>
                     </tr>
                 </table>
                 <div class="row ">
                     <div class="col s4 m4">
                         <div class="center promo promo-example">
-                            <i class="material-icons">attach_money</i>
-                            <p class="promo-caption">Costo:</p>
-                            <p class="light center">$<?php echo "<input value='". $Sql['costo']. "' name='costo'>"; ?></p>
+                            <i class="material-icons" id='icons-standarized'>attach_money</i>
+                            <p class="promo-caption" id='text-standarized'>Costo:</p>
+                            <p class="light center"><?php echo "<input value='$". $Sql['costo']. "' name='costo' id='text-standarized'>"; ?></p>
                         </div>
                     </div>
                     <div class="col s4 m4">
                         <div class="center promo promo-example">
-                            <i class="material-icons">dashboard</i>
-                            <p class="promo-caption">En almacen:</p>
-                            <p class="light center"><?php echo "<input value='". $Sql['stock']. "' name='stock'>"; ?></p>
+                            <i class="material-icons" id='icons-standarized'>dashboard</i>
+                            <p class="promo-caption" id='text-standarized'>En almacen:</p>
+                            <p class="light center"><?php echo "<input value='". $Sql['stock']. "' name='stock' id='text-standarized'>"; ?></p>
                         </div>
                     </div>
                     <div class="col s4 m4">
                         <div class="center promo promo-example">
-                            <i class="material-icons">code</i>
-                            <p class="promo-caption">Codigo:</p>
-                            <p class="light center"><?php echo "<input value='".$Sql['codigo']."' name='codigo'>"; ?></p>
+                            <i class="material-icons" id='icons-standarized'>code</i>
+                            <p class="promo-caption" id='text-standarized'>Codigo:</p>
+                            <p class="light center"><?php echo "<input value='".$Sql['codigo']."' name='codigo' id='text-standarized'>"; ?></p>
                         </div>
                     </div>
                 </div>

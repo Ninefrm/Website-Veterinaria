@@ -63,12 +63,11 @@ else{
 
         <?php
         if($id_usr != 0){
-            ECHO "<li class=\"divider\"></li>
-            <li><a href=\"Compras_view.php\"><i class=\"material-icons\">store</i>Compras</a></li>
+            ECHO "<li><a href=\"Compras_view.php\"><i class=\"material-icons\">store</i>Compras</a></li>
             <li class=\"divider\"></li>
             
             ";
-            ECHO "<li class=\"divider\"></li>
+            ECHO "
             <li><a href=\"Mascota_view.php\"><i class=\"material-icons\">pets</i>Mascotas</a></li>
             <li class=\"divider\"></li>
             
@@ -76,7 +75,8 @@ else{
             if($perfil == "Administrador"){
                 Echo "<li><a href=\"Producto_edit.php\" title=\"Agregar Producto\"><i class=\"material-icons\">library_add</i>Agregar Producto</span></div></a></li>
         ";
-                Echo "<li><a href=\"Servicio_edit.php\" title=\"Agregar Servicio\"><i class=\"material-icons\">library_add</i>Agregar Servicio</span></div></a></li>
+                Echo "<li class=\"divider\"></li>
+                <li><a href=\"Servicio_edit.php\" title=\"Agregar Servicio\"><i class=\"material-icons\">library_add</i>Agregar Servicio</span></div></a></li>
             <li class=\"divider\"></li>
         ";
             }
@@ -93,8 +93,27 @@ else{
         }else{
             Echo "<li><a href=\"Login.php\" title=\"Iniciar Sesion\"><i class=\"material-icons\">perm_identity</i>Iniciar Sesion</a></li>";
         }
-
+        Echo "<li class=\"divider\"></li>
+        <li><a href='' class='btn-toggle' title=\"Modo Oscuro\"><i class=\"material-icons\">visibility</i>Modo Oscuro</a></li>";
         //        ?>
+        <script>
+            const btn = document.querySelector(".btn-toggle");
+
+            const currentTheme = localStorage.getItem("theme");
+            if (currentTheme == "dark") {
+                document.body.classList.add("dark-theme");
+            }
+
+            btn.addEventListener("click", function () {
+            document.body.classList.toggle("dark-theme");
+
+            let theme = "light";
+            if (document.body.classList.contains("dark-theme")) {
+                theme = "dark";
+            }
+            localStorage.setItem("theme", theme);
+            });
+        </script>
         <!--        <li><a href="Login.php" title="Iniciar Sesion" class="center-align"><i class="material-icons right">perm_identity</i> Iniciar Sesion </a></li>-->
         <!--        <li><a href="cerrar.php" title="Cerrar Sesion" class="center-align"><i class="material-icons right">power_settings_new</i> Cerrar Sesion </a></li>-->
     </ul>

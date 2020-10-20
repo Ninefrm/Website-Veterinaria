@@ -4,12 +4,24 @@
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
 
-:root {
-  --first: #212121; /* Color de Fondo #ffffff */
-  --second: #32e0c4;  /* Color de Header #129db3 */
-  --third: #0d7377;  /* Color de Seccion #607d8b */
-  --fourth: #eeeeee; /* Color de Texto ( Muy diferente a los demas )*/ 
-  --fifth: ;
+:root{
+  --darker:#0f1318;
+  --less-darker:#3a4049;
+  --less-lighter: #4ecca3;
+  --lighter: #eeeeee;
+}
+
+ body{
+  --first: var(--darker); /* Color de Fondo #ffffff */
+  --second:var(--less-darker);  /* Color de Header #129db3 */
+  --third: var(--less-lighter);  /* Color de Seccion #607d8b */
+  --fourth:var(--lighter); /* Color de Texto ( Muy diferente a los demas )*/ 
+}
+body.dark-theme{
+  --first: var(--lighter); /* Color de Fondo #ffffff */
+  --second:var(--less-lighter);  /* Color de Header #129db3 */
+  --third: var(--less-darker);  /* Color de Seccion #607d8b */
+  --fourth:var(--darker); /* Color de Texto ( Muy diferente a los demas )*/ 
 }
 
 .materialize-red {
@@ -5553,7 +5565,7 @@ button.btn-floating {
 }
 
 .dropdown-content {
-  background-color: #fff;
+  background-color: var(--third) !important;
   margin: 0;
   display: none;
   min-width: 100px;
@@ -9095,8 +9107,8 @@ input[type=range]::-ms-thumb {
 }
 
 #section-header {
-  background-color: var(--third);
-  color: var(--fourth);
+  background-color: var(--third) !important;
+  color: var(--fourth) !important;
 }
 
 #text-standarized {
@@ -9108,10 +9120,6 @@ input[type=range]::-ms-thumb {
   color: var(--third);
 }
 
-#icons-standarized {
-  color: var(--fourth);
-}
-
-#busqueda {
-  color: var(--fourth);
+#icons-standarized,#fecha_nac,#fecha_vac,#icon_email,#icon_password,#busqueda,th,p,input,i,a,h2,td,label,span {
+  color: var(--fourth) !important;
 }

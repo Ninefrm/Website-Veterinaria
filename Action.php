@@ -185,14 +185,14 @@ require_once ("Plantilla/Header.php");
     <div class="col s4"></div>
     <div class="col s4 Background_ColorWhite CenterOnFullPage">
         <div class="col s12">
-            <p class="center"> NINE </p>
+            <p class="center" id='text-standarized'> NINE </p>
         </div>
         <div class="col s12 center">
-            <p><?php echo $action; ?></p>
+            <p id='text-standarized'><?php echo $action; ?></p>
             <br>
         </div>
         <div class="col s12 center-align">
-            <a class="waves-effect waves-light btn" href="<?php echo $href ?>">Home</a>
+            <a class="waves-effect waves-light btn" href="<?php echo $href ?>" id='section-header'>Home</a>
         </div>
         <div class="col s12">
             <p></p>

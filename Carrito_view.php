@@ -14,7 +14,7 @@
 
     <div class="col s12 m6">
         <div class="card blue-grey darken-1">
-            <div class="card-content white-text green">
+            <div class="card-content white-text green" id='section-header'>
                 <span class="card-title" align='center'>PRODUCTOS EN EL CARRITO: <p></p> <?php echo $cantidad?></span>
             </div>
         </div>
@@ -22,12 +22,12 @@
     <table class="responsive-table">
         <thead>
         <tr>
-            <th class='center'>NOMBRE DEL PRODUCTO/SERVICIO</th>
-            <th class='center'>CODIGO DE PRODUCTO</th>
-            <th class='center'>PRECIO POR UNIDAD</th>
-            <th class='center'>CANTIDAD</th>
-            <th class='center'>TOTAL</th>
-            <th colspan="3">ACCIONES</th>
+            <th class='center' id='text-standarized'>NOMBRE DEL PRODUCTO/SERVICIO</th>
+            <th class='center' id='text-standarized'>CODIGO DE PRODUCTO</th>
+            <th class='center' id='text-standarized'>PRECIO POR UNIDAD</th>
+            <th class='center' id='text-standarized'>CANTIDAD</th>
+            <th class='center' id='text-standarized'>TOTAL</th>
+            <th colspan="3" id='text-standarized'>ACCIONES</th>
 
         </tr>
         </thead>
@@ -42,15 +42,15 @@
             foreach ($Producto as $SQLProductos):
                 ?>
                 <tr>
-                    <?php $str = strtoupper($SQLProductos['nombre']); echo "<td class='center'>". $str ."</td>"; ?>
-                    <?php echo "<td class='center'>". $SQLProductos['codigo'] ."</td>"; ?>
-                    <?php echo "<td class='center'> $". $SQLProductos['costo'] ."</td>"; ?>
-                    <?php echo "<td class='center'> ". $Sql['cantidad'] ."</td>"; ?>
+                    <?php $str = strtoupper($SQLProductos['nombre']); echo "<td class='center' id='text-standarized'>". $str ."</td>"; ?>
+                    <?php echo "<td class='center' id='text-standarized'>". $SQLProductos['codigo'] ."</td>"; ?>
+                    <?php echo "<td class='center' id='text-standarized'> $". $SQLProductos['costo'] ."</td>"; ?>
+                    <?php echo "<td class='center' id='text-standarized'> ". $Sql['cantidad'] ."</td>"; ?>
                     <?php $total = $Sql['cantidad'] * $SQLProductos['costo']; ?>
                     <?php $totalT = $total+$totalT; ?>
-                    <?php echo "<td class='center'> $". $total ."</td>"; ?>
-                    <?php echo "<td class='center'>"."<a href='Producto_view.php?id=".$SQLProductos['id_producto']."' class='large material-icons'>visibility</a>". "</td>"; ?>
-                    <?php echo "<td class='center'>"."<a href='NoComprarProducto.php?id=".$SQLProductos['id_producto']."' class='large material-icons'>delete_forever</a>". "</td>"; ?>
+                    <?php echo "<td class='center' id='text-standarized'> $". $total ."</td>"; ?>
+                    <?php echo "<td class='center'>"."<a href='Producto_view.php?id=".$SQLProductos['id_producto']."' class='large material-icons' id='icons-standarized'>visibility</a>". "</td>"; ?>
+                    <?php echo "<td class='center'>"."<a href='NoComprarProducto.php?id=".$SQLProductos['id_producto']."' class='large material-icons' id='icons-standarized'>delete_forever</a>". "</td>"; ?>
                 </tr>
             <?php endforeach; ?>
         <?php endforeach; ?>
@@ -86,40 +86,40 @@
                 <div class="row">
                     <div class="input-field col s6">
                         <input name="first_name" id="icon_email" type="text" class="validate" disabled value="<?php echo  $Sql['nombre']; ?>">
-                        <label for="first_name">Nombre:</label>
+                        <label for="first_name" id='text-standarized'>Nombre:</label>
                     </div>
                     <div class="input-field col s3">
                         <input name="apellido_p" id="icon_email" type="text" class="validate" disabled value="<?php echo  $Sql['apellido_p']; ?>">
-                        <label for="apellido_p">Apellido Paterno:</label>
+                        <label for="apellido_p" id='text-standarized'>Apellido Paterno:</label>
                     </div>
                     <div class="input-field col s3">
                         <input name="apellido_m" id="icon_email" type="text" class="validate" disabled value="<?php echo  $Sql['apellido_m']; ?>">
-                        <label for="apellido_m">Apellido Materno:</label>
+                        <label for="apellido_m" id='text-standarized'>Apellido Materno:</label>
                     </div>
                 </div>
                 <form action="Action.php" method="post">
                 <div class="row">
                     <div class="input-field col s6">
-                        <td><input name="calle" value="<?php echo  $Sql['calle']; ?>" type="text"></td>
+                        <td><input name="calle" value="<?php echo  $Sql['calle']; ?>" type="text" id='text-standarized'></td>
                         <!--                    <input name="calle" type="text" class="validate" disabled value="--><?php //echo  $Sql['calle']; ?><!--">-->
-                        <label for="calle">Calle:</label>
+                        <label for="calle" id='text-standarized'>Calle:</label>
                     </div>
                     <div class="input-field col s1">
-                        <td><input name="numero_domicilio" value="<?php echo  $Sql['numero_domicilio']; ?>" type="text"></td>
+                        <td><input name="numero_domicilio" value="<?php echo  $Sql['numero_domicilio']; ?>" type="text" id='text-standarized'></td>
                         <!--                    <input name="calle" type="text" class="validate" disabled value="--><?php //echo  $Sql['calle']; ?><!--">-->
-                        <label for="numero">Numero:</label>
+                        <label for="numero" id='text-standarized'>Numero:</label>
                     </div>
                     <div class="input-field col s3">
                         <input name="colonia" id="icon_email" type="text" class="validate" value="<?php echo  $Sql['colonia']; ?>">
-                        <label for="colonia">Colonia:</label>
+                        <label for="colonia" id='text-standarized'>Colonia:</label>
                     </div>
                     <div class="input-field col s1">
                         <input name="codigo_postal" id="icon_email" type="text" class="validate"  value="<?php echo  $codigo_postal; ?>">
-                        <label for="codigo_postal">Codigo Postal:</label>
+                        <label for="codigo_postal" id='text-standarized'>Codigo Postal:</label>
                     </div>
                     <div class="input-field col s1">
                         <input name="telefono" id="icon_email" type="text" class="validate"  value="<?php echo  $telefono; ?>">
-                        <label for="telefono">Teléfono:</label>
+                        <label for="telefono" id='text-standarized'>Teléfono:</label>
                     </div>
                 </div>
 
@@ -130,21 +130,21 @@
                         <option value="EFECTIVO">EFECTIVO</option>
                         <option value="DEBITO">DEBITO</option>
                     </select>
-                    <label>Metodo de Pago</label>
+                    <label id='text-standarized'>Metodo de Pago</label>
                 </div>
                 <div class="input-field col s6">
                     <select name="envio" id="envio" required>
-                        <option value="" disabled selected>Elegir opción (REQUERIDO)</option>
+                        <option value="" disabled selected >Elegir opción (REQUERIDO)</option>
                         <option value="DHL">DHL EXPRESS (3 días) - $99</option>
                         <option value="FEDEX">FEDEX (5 días) - $50</option>
                         <option value="UPS">UPS (7 días habiles) - GRATIS</option>
                     </select>
-                    <label>Metodo de Envio</label>
+                    <label id='text-standarized'>Metodo de Envio</label>
                 </div>
                 <script>
                     print(instance.getSelectedValues());
                 </script>
-                    <p>
+                    <p id='text-standarized'>
                         TOTAL: $
                         <?php echo $totalT?>
                     </p>

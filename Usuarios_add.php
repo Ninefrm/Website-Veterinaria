@@ -6,19 +6,19 @@
         <input name="FormID" value="register" hidden>
         <table width="500" border="0" cellpadding="5" cellspacing="5">
             <tr>
-                <th>Nombre del cliente:</th>
-                <td><input name="nombre_cliente" type="text"></td>
+                <th id='text-standarized'>Nombre del cliente:</th>
+                <td><input name="nombre_cliente" type="text" id='text-standarized'></td>
             </tr>
             <tr>
-                <th>Apellido paterno:</th>
-                <td><input name="apellido_p" type="text"></td>
+                <th id='text-standarized'>Apellido paterno:</th>
+                <td><input name="apellido_p" type="text" id='text-standarized'></td>
             </tr>
             <tr>
-                <th>Apellido materno:</th>
-                <td><input name="apellido_m" type="text"></td>
+                <th id='text-standarized'>Apellido materno:</th>
+                <td><input name="apellido_m" type="text" id='text-standarized'></td>
             </tr>
             <tr>
-                <th>Fecha de nacimiento:</th>
+                <th id='text-standarized'>Fecha de nacimiento:</th>
                 <td class="input-field col s3">
                         <input type="date" id="fecha_nac" name="fecha_nac"
                                value="<?php echo date("Y-m-d")?>"
@@ -27,36 +27,36 @@
                     </td>
             </tr>
             <tr>
-                <th>Correo electronico:</th>
-                <td><input name="correo_electronico" type="text"></td>
+                <th id='text-standarized'>Correo electronico:</th>
+                <td><input name="correo_electronico" type="text" id='text-standarized'></td>
             </tr>
             <tr>
-                <th>Contraseña:</th>
-                <td><input name="password" type="password"></td>
+                <th id='text-standarized'>Contraseña:</th>
+                <td><input name="password" type="password" id='text-standarized'></td>
             </tr>
             <tr>
-                <th>Número de teléfono:</th>
-                <td><input name="numero_de_telefono" type="text"></td>
+                <th id='text-standarized'>Número de teléfono:</th>
+                <td><input name="numero_de_telefono" type="text" id='text-standarized'></td>
             </tr>
             <tr>
-                <th>Calle:</th>
-                <td><input name="calle" type="text"></td>
+                <th id='text-standarized'>Calle:</th>
+                <td><input name="calle" type="text" id='text-standarized'></td>
             </tr>
             <tr>
-                <th>#:</th>
-                <td><input name="numero_domicilio" type="text"></td>
+                <th id='text-standarized'>#:</th>
+                <td><input name="numero_domicilio" type="text" id='text-standarized'></td>
             </tr>
             <tr>
-                <th>Colonia:</th>
-                <td><input name="colonia" type="text"></td>
+                <th id='text-standarized'>Colonia:</th>
+                <td><input name="colonia" type="text" id='text-standarized'></td>
             </tr>
             <tr>
-                <th>Codigo postal:</th>
-                <td><input name="codigo_postal" type="text"></td>
+                <th id='text-standarized'>Codigo postal:</th>
+                <td><input name="codigo_postal" type="text" id='text-standarized'></td>
             </tr>
             <tr>
-                <th>Metodo de pago:</th>
-                <td><input name="metodo_de_pago" type="text"></td>
+                <th id='text-standarized'>Metodo de pago:</th>
+                <td><input name="metodo_de_pago" type="text" id='text-standarized'></td>
             </tr>
             <tr>
         </table>

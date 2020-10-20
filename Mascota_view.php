@@ -19,7 +19,7 @@ if($tipo == "Administrador"){
 
     <div class="col s12 m6">
         <div class="card blue-grey darken-1">
-            <div class="card-content white-text blue">
+            <div class="card-content white-text blue" id='section-header'>
                 <span class="card-title" align='center'>MASCOTAS</span>
             </div>
         </div>
@@ -33,18 +33,18 @@ if($tipo == "Administrador"){
 
         <thead>
         <tr>
-            <th>CATEGORIA</th>
-            <th>NOMBRE DE LA MASCOTA</th>
-            <th>FECHA DE NACIMIENTO</th>
+            <th id='text-standarized'>CATEGORIA</th>
+            <th id='text-standarized'>NOMBRE DE LA MASCOTA</th>
+            <th id='text-standarized'>FECHA DE NACIMIENTO</th>
             <?php if($tipo=="Administrador"){
-                ECHO "<th>CLIENTE</th>";
+                ECHO "<th id='text-standarized'>CLIENTE</th>";
             }
             ?>
-            <th>FECHA ULTIMA VACUNA</th>
-            <th>ULTIMO PESO</th>
-            <th>RAZA</th>
+            <th id='text-standarized'>FECHA ULTIMA VACUNA</th>
+            <th id='text-standarized'>ULTIMO PESO</th>
+            <th id='text-standarized'>RAZA</th>
 
-            <th colspan="3">ACCIONES</th>
+            <th colspan="3" id='text-standarized'>ACCIONES</th>
 
         </tr>
         </thead>
@@ -60,12 +60,12 @@ if($tipo == "Administrador"){
             $html = preg_replace("/\\\\u([0-9A-F]{2,5})/i", "&#x$1;", $text);
             ?>
             <?php ECHO "<td> $html </td>" ?>
-            <?php $str = strtoupper($Sql['nombre']); echo "<td>". $str ."</td>"; ?>
-            <?php echo "<td>". $Sql['fecha_nac'] ."</td>"; ?>
-            <?php if($tipo == "Administrador") echo "<td>". $Sql['nombre_cliente'] ."</td>"; ?>
-            <?php echo "<td>". $Sql['fecha_vac'] ."</td>"; ?>
-            <?php echo "<td>". $Sql['peso'] ." kg </td>"; ?>
-            <?php echo "<td>". $Sql['raza'] ."</td>"; ?>
+            <?php $str = strtoupper($Sql['nombre']); echo "<td id='text-standarized'>". $str ."</td>"; ?>
+            <?php echo "<td id='text-standarized'>". $Sql['fecha_nac'] ."</td>"; ?>
+            <?php if($tipo == "Administrador") echo "<td id='text-standarized'>". $Sql['nombre_cliente'] ."</td>"; ?>
+            <?php echo "<td id='text-standarized'>". $Sql['fecha_vac'] ."</td>"; ?>
+            <?php echo "<td id='text-standarized'>". $Sql['peso'] ." kg </td>"; ?>
+            <?php echo "<td id='text-standarized'>". $Sql['raza'] ."</td>"; ?>
 
                     <?php echo "<td>
                                 <form action='Mascota_edit.php' method='get'>
