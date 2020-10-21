@@ -45,6 +45,14 @@ class users{
         
         return $this->db->query($sql)->fetchAll();
     }
+
+    public function getUsers()
+    {
+        $sql = "SELECT * FROM users WHERE activo = 1;";
+        
+        return $this->db->query($sql)->fetchAll();
+
+    }
     
 }
 
