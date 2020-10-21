@@ -10,7 +10,7 @@ include "class/class.mascota.php";
 //var_dump($_POST);
 $action = "";
 $href = "./Index.php";
-print_r($_POST);
+// print_r($_POST);
     if(isset($_POST['FormID'])){
         //    Register
         if($_POST['FormID'] == "register"){

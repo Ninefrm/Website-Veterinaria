@@ -12,6 +12,10 @@ if($tipo == "Cliente"){
 if($tipo == "Administrador"){
     $mascotas = $Mascotas->getPets();
 }
+// Asignación cuando se es médico
+if($tipo == "Medico"){
+    $mascotas = $Mascotas->getMedicPets($id_usr);
+}
 ?>
 
 

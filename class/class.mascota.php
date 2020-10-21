@@ -113,6 +113,28 @@ class pet{
         
         return $this->db->query($sql)->fetchAll();
     }
+    // FUNCIÓN PARA MÉDICO
+    public function getMedicPets($id_usr){
+        $sql = "SELECT 
+        id_mascota, 
+        m.id_cliente,
+        u.nombre AS nombre_cliente, 
+        m.nombre, 
+        m.fecha_nac, 
+        fecha_vac, 
+        categoria, 
+        raza, color, 
+        peso, 
+        m.activo
+        FROM mascota m
+        INNER JOIN users u ON m.id_cliente = u.USER_ID
+        INNER JOIN historial_clinico h ON m.id_mascota = h.mascota_id 
+        WHERE m.activo = 1 AND h.id_medico = '$id_usr';";
+        
+        // echo $sql;
+        
+        return $this->db->query($sql)->fetchAll();
+    }
 
     
 }

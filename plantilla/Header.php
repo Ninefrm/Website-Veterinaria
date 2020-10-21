@@ -180,8 +180,7 @@ else{
             
             ";
                 if($perfil == "Administrador"){
-                    Echo "<li><a href=\"Producto_edit.php\" title=\"Agregar Libro\"><i class=\"material-icons\">library_add</i>Agregar producto</span></div></a></li>
-
+                    Echo "<li><a href=\"Producto_edit.php\" title=\"Agregar Producto\"><i class=\"material-icons\">library_add</i>Agregar producto</span></div></a></li>
         ";
                 }
             }else{
