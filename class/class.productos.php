@@ -41,7 +41,7 @@ class products{
             return $Mensaje;
         }
         if(isset($_FILES['ImageToUpload']['name'])){
-            $ImageToUpload = $_FILES['ImageToUpload']['name'];
+            $ImageToUpload = "productos/" . $_FILES['ImageToUpload']['name'];
         }else{
             $ImageToUpload = 0;
         }
@@ -85,7 +85,7 @@ class products{
             $codigo = 0;
         }
         if(isset($_FILES['ImageToUpload']['name'])){
-            $ImageToUpload = $_FILES['ImageToUpload']['name'];
+            $ImageToUpload = "productos/" . $_FILES['ImageToUpload']['name'];
         }else{
             $ImageToUpload = $_POST['imagen'];
         }
@@ -146,7 +146,7 @@ class products{
                 $nombre = $Sql['nombre'];
                 $precio = $Sql['costo'];
                 $descripcion = $Sql['descripcion'];
-                ECHO "<a class='carousel-item' href='Producto_view.php?id=$id'><img src='upload/productos/$image'><p id='text-standarized'>$nombre<br>Precio: $$precio
+                ECHO "<a class='carousel-item' href='Producto_view.php?id=$id'><img src='upload/$image'><p id='text-standarized'>$nombre<br>Precio: $$precio
                     <br>Descripcion: $descripcion</p></a>";
             endforeach;
             ECHO "

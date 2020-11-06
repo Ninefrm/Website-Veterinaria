@@ -32,7 +32,7 @@
                     <?php
                     $imagen = $Sql['imagen'];
                     Echo "<div class=\"parallax\">
-                        <img class=\"materialboxed\" src=\"upload/servicios/$imagen \">
+                        <img class=\"materialboxed\" src=\"upload/$imagen \">
                         </div>";
                     ?>
                 </div>
@@ -68,7 +68,7 @@
                         <div class="center promo promo-example">
                             <i class="material-icons">attach_money</i>
                             <p class="promo-caption">Costo:</p>
-                            <p class="light center"><?php echo "<input value='$". $Sql['costo']. "' name='costo'>"; ?></p>
+                            <p class="light center"><?php echo "<input value='". $Sql['costo']. "' name='costo'>"; ?></p>
                         </div>
                     </div>
                     <!-- <div class="col s4 m4">

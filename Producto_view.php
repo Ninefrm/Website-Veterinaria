@@ -18,7 +18,7 @@
                 <?php
                 $imagen = $Sql['imagen'];
                 Echo "<div class=\"parallax\">
-                    <img class=\"materialboxed\" src=\"upload/productos/$imagen \">
+                    <img class=\"materialboxed\" src=\"upload/$imagen \">
                     </div>";
                 ?>
             </div>

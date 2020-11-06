@@ -32,7 +32,7 @@
                     <?php
                     $imagen = $Sql['imagen'];
                     Echo "<div class=\"parallax\">
-                        <img class=\"materialboxed\" src=\"upload/productos/$imagen \">
+                        <img class=\"materialboxed\" src=\"upload/$imagen \">
                         </div>";
                     ?>
                 </div>
@@ -44,7 +44,10 @@
                             <input type="file" name="ImageToUpload">
                         </div>
                         <div class="file-path-wrapper">
-                            <input class="file-path validate" type="text">
+                            <?php
+                                $str = strtoupper($Sql['imagen']);
+                                echo "<input class='file-path validate' name='default_image' value='". $str. "' type='text'>"; 
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -68,7 +71,7 @@
                         <div class="center promo promo-example">
                             <i class="material-icons" id='icons-standarized'>attach_money</i>
                             <p class="promo-caption" id='text-standarized'>Costo:</p>
-                            <p class="light center"><?php echo "<input value='$". $Sql['costo']. "' name='costo' id='text-standarized'>"; ?></p>
+                            <p class="light center"><?php echo "<input value='". $Sql['costo']. "' name='costo' id='text-standarized'>"; ?></p>
                         </div>
                     </div>
                     <div class="col s4 m4">

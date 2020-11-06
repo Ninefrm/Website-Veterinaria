@@ -41,7 +41,7 @@ class services{
             return $Mensaje;
         }
         if(isset($_FILES['ImageToUpload']['name'])){
-            $ImageToUpload = $_FILES['ImageToUpload']['name'];
+            $ImageToUpload = "servicios/" . $_FILES['ImageToUpload']['name'];
         }else{
             $ImageToUpload = 0;
         }
@@ -85,7 +85,7 @@ class services{
             $codigo = 0;
         }
         if(isset($_FILES['ImageToUpload']['name'])){
-            $ImageToUpload = $_FILES['ImageToUpload']['name'];
+            $ImageToUpload = "servicios/" . $_FILES['ImageToUpload']['name'];
             echo $ImageToUpload;
         }else{
             $ImageToUpload = $_POST['imagen'];
@@ -148,7 +148,7 @@ class services{
                     $nombre = $Sql['nombre'];
                     $precio = $Sql['costo'];
                     $descripcion = $Sql['descripcion'];
-                    ECHO "<a class='carousel-item' href='Servicio_view.php?id=$id'><img src='upload/servicios/$image'><p id='text-standarized'>$nombre<br>Precio: $$precio
+                    ECHO "<a class='carousel-item' href='Servicio_view.php?id=$id'><img src='upload/$image'><p id='text-standarized'>$nombre<br>Precio: $$precio
                             <br>Descripcion: $descripcion</p></a>";
                 endforeach;
         ECHO "
