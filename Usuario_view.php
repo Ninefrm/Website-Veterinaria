@@ -3,18 +3,14 @@
 
 $id_usr = $_SESSION['user_id'];
 $tipo = $_SESSION['perfil'];
-$Mascotas = new pet();
+$Usuarios = new users();
 
 
-if($tipo == "Cliente"){
-    $mascotas = $Mascotas->getPetByUserID($id_usr);
+if($tipo == "Cliente" or $tipo == "Medico"){
+    $Usuarios = $Usuarios->getUser($id_usr);
 }
 if($tipo == "Administrador"){
-    $mascotas = $Mascotas->getPets();
-}
-// Asignación cuando se es médico
-if($tipo == "Medico"){
-    $mascotas = $Mascotas->getMedicPets($id_usr);
+    $Usuarios = $Usuarios->getUsers();
 }
 ?>
 
@@ -24,11 +20,11 @@ if($tipo == "Medico"){
     <div class="col s12 m6">
         <div class="card blue-grey darken-1">
             <div class="card-content white-text blue" id='section-header'>
-                <span class="card-title" align='center'>MASCOTAS</span>
+                <span class="card-title" align='center'>Usuarios</span>
             </div>
         </div>
     </div>
-    <form action="Mascota_edit.php" method="post" id="mainform">
+    <form action="Usuario_edit.php" method="post" id="mainform">
         <td><input type="hidden" name="id_cliente" value="<?php echo  $id_usr; ?>" type="text"></td>
         <button class="waves-effect waves-light btn-small green" type="submit" form="mainform" value="Submit"><i class="material-icons left">pets
             </i>Agregar</button>
@@ -38,7 +34,7 @@ if($tipo == "Medico"){
         <thead>
         <tr>
             <th id='text-standarized'>CATEGORIA</th>
-            <th id='text-standarized'>NOMBRE DE LA MASCOTA</th>
+            <th id='text-standarized'>NOMBRE DE LA Usuario</th>
             <th id='text-standarized'>FECHA DE NACIMIENTO</th>
             <?php if($tipo=="Administrador"){
                 ECHO "<th id='text-standarized'>CLIENTE</th>";
@@ -52,8 +48,8 @@ if($tipo == "Medico"){
 
         </tr>
         </thead>
-        <?php foreach ($mascotas as $Sql): $id_cliente = $Sql['id_cliente'];
-            $id_mascota = $Sql['id_mascota'];
+        <?php foreach ($Usuarios as $Sql): $id_cliente = $Sql['id_cliente'];
+            $id_Usuario = $Sql['id_Usuario'];
             $categoria = $Sql['categoria'];?>
 
             <tr>
@@ -72,8 +68,8 @@ if($tipo == "Medico"){
             <?php echo "<td id='text-standarized'>". $Sql['raza'] ."</td>"; ?>
 
                     <?php echo "<td>
-                                <form action='Mascota_edit.php' method='get'>
-                                <button class='btn waves-effect waves-light blue' type='submit' name='id' value='$id_mascota'>
+                                <form action='Usuario_edit.php' method='get'>
+                                <button class='btn waves-effect waves-light blue' type='submit' name='id' value='$id_Usuario'>
                                 <i class='material-icons'>visibility</i>
                                 </button>
                                 </form></td>"; ?>

@@ -136,6 +136,20 @@ class database{
         if (is_int($var)) return 'i';
         return 'b';
     }
+    
+    // NINEFRM
+    
+    public function getColumnNames()
+    {
+        $Columns = $this->query->result_metadata();
+        $Columns = $Columns->fetch_fields();
+        $Names = [];
+        foreach($Columns as $field){
+            $Name = str_replace("_"," ", $field->name);
+            array_push($Names, $Name);
+        }
+        return $Names;
+    }
 
 }
 ?>

@@ -7,7 +7,7 @@ $total = 0;
 $id_usr = $_SESSION['user_id'];
 $tipo = $_SESSION['perfil'];
 //echo $_SESSION['tipo'];
-if($tipo == "Cliente"){
+if($tipo == "Cliente" OR $tipo == "Medico"){
     $venta = $Ventas->getVentasByUserID($id_usr);
 }
 if($tipo == "Administrador"){

@@ -91,13 +91,15 @@ if(isset($_GET['id'])){
             </tr>
         </thead>
         <?php foreach ($GetCitas as $Sql): ?>
+            <tr>
             <td id='text-standarized'> <?php echo ($Servicio->getNameByID($Sql['id_servicio'])[0]['nombre']) ?> </td>
             <td id='text-standarized'> Principal </td>
             <!-- <td> <?php echo $Sql['id_medico'] ?> </td> -->
             <td id='text-standarized'> <?php echo $Sql['cita'] ?> </td>
             <td id='text-standarized'> <?php echo $Sql['pago'] ?> </td>
             <td id='text-standarized'> $<?php echo $Sql['total'] ?> </td>
-            <?php if($tipo == "Administrador"){ ?>
+            <!-- Permiso del perfil médico -->
+            <?php if($tipo == "Administrador" or $tipo == "Medico"){ ?>
                 <td> 
                 <form action="Action.php" method="post" enctype="multipart/form-data" >
                     <input name="FormID" value="Receta_edit" hidden>
@@ -133,6 +135,7 @@ if(isset($_GET['id'])){
                             <button class=\"waves-effect waves-light btn-small green\"><i class=\"material-icons\">check</i></button>
                             </td>";
             }?> 
+            </tr>
         <?php endforeach; ?>
     </table>
 
