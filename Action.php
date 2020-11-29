@@ -174,6 +174,19 @@ $href = "./Index.php";
                 $href = "./Mascota_edit.php?id=".$_POST['mascota_id']."";
             }
         }
+        if($_POST['FormID'] == "Change_Medic"){
+            $Usuarios = new users();
+            $User_ID = $_POST['UserID'];
+            $Medic_ID = $_POST['new_medic'];
+            $Update_Medic = $Usuarios->updateMedic($Medic_ID, $User_ID);
+            if($Update_Medic){
+                $action = "Medico actualizado.";
+                $href = "./Usuario_view.php";
+            }else{
+                $action = "Medico no actualizado.";
+                $href = "./Usuario_view.php";
+            }
+        }
     }
 
 ?>
