@@ -5,13 +5,8 @@ $id_usr = $_SESSION['user_id'];
 $tipo = $_SESSION['perfil'];
 $Usuario = new users();
 
-
-if($tipo == "Cliente" or $tipo == "Medico"){
-    $Usuarios = $Usuario->getUser($id_usr);
-}
 if($tipo == "Administrador"){
     $Usuarios = $Usuario->getUsersToView();
-}
 ?>
 
 
@@ -57,7 +52,7 @@ if($tipo == "Administrador"){
                     </td>
                 </form>
                 <td class="center">
-                    <button class="waves-effect waves-light btn-small green"><i class="material-icons">visibility</i></button>
+                    <a class="waves-effect waves-light btn-small green" href="./Usuario_check.php?User_ID=<?php echo $id_cliente ?>"><i class="material-icons">visibility</i></a>
                 </td>
             </tr>
         <?php endforeach; ?>
@@ -69,7 +64,7 @@ if($tipo == "Administrador"){
 
 </div>
 
-<?php include 'Plantilla/PieDePagina.php'; ?>
+<?php } include 'Plantilla/PieDePagina.php'; ?>
 
 </body>
 
