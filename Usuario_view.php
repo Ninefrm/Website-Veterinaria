@@ -34,6 +34,7 @@ if($tipo == "Administrador"){
             $Mascotas = $Sql['No_MASCOTAS'];
             $Medico = $Sql['MEDICO_CABECERA'];
             $Medico_ID = $Sql['medico_cabecera'];
+            $Profile = $Sql['tipo'];
         ?>
 
             <tr>
@@ -45,6 +46,9 @@ if($tipo == "Administrador"){
                     <input name="UserID" value="<?php echo $id_cliente ?>" hidden>
                     <select name='new_medic'>
                         <?php echo $Usuario->selectMedic($Medico_ID) ?>
+                    </select>
+                    <select name='new_profile'>
+                        <?php echo $Usuario->selectProfile($Profile) ?>
                     </select>
                     </td>
                     <td class="center">

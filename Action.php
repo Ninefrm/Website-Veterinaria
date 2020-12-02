@@ -178,7 +178,8 @@ $href = "./Index.php";
             $Usuarios = new users();
             $User_ID = $_POST['UserID'];
             $Medic_ID = $_POST['new_medic'];
-            $Update_Medic = $Usuarios->updateMedic($Medic_ID, $User_ID);
+            $Profile = $_POST['new_profile'];
+            $Update_Medic = $Usuarios->updateMedic($Medic_ID, $Profile, $User_ID);
             if($Update_Medic){
                 $action = "Medico actualizado.";
                 $href = "./Usuario_view.php";

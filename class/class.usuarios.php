@@ -60,7 +60,8 @@ class users{
         CONCAT(u.nombre, ' ', u.apellido_p, ' ', u.apellido_m) AS NOMBRE_COMPLETO,
         (SELECT COUNT(*) FROM mascota m WHERE m.id_cliente = u.USER_ID) AS No_MASCOTAS,
         CONCAT(medic.nombre, ' ', medic.apellido_p, ' ', medic.apellido_m) AS MEDICO_CABECERA,
-        u.medico_cabecera
+        u.medico_cabecera,
+        u.tipo
         FROM users u
         INNER JOIN users medic ON u.medico_cabecera = medic.USER_ID
         ORDER BY u.USER_ID;";
@@ -74,7 +75,7 @@ class users{
 
         return $this->db->query($sql)->fetchAll();
     }
-    
+
     public function selectMedic($Medico_ID)
     {
         $Usuarios = $this->getMedics();
@@ -90,9 +91,22 @@ class users{
             echo "<option $Selected value = '$Medic_ID'>$Medic_Name</option>";
         endforeach;
     }
-    public function updateMedic($Medic_ID, $User_ID)
+
+    public function selectProfile($Profile){
+        $Selected1 = "";
+        $Selected2 = "";
+        $Selected3 = "";
+        if($Profile == 3) $Selected1 = "selected";
+        if($Profile == 1) $Selected2 = "selected";
+        if($Profile == 2) $Selected3 = "selected";
+        echo "<option $Selected1 value = '3'>Administrador</option>";
+        echo "<option $Selected2 value = '1'>Cliente</option>";
+        echo "<option $Selected3 value = '2'>Medico</option>";
+    }
+
+    public function updateMedic($Medic_ID, $Profile ,$User_ID)
     {
-        $Sql = "UPDATE users SET medico_cabecera = '$Medic_ID' WHERE USER_ID = '$User_ID'";
+        $Sql = "UPDATE users SET medico_cabecera = '$Medic_ID', tipo = '$Profile' WHERE USER_ID = '$User_ID'";
         // echo $Sql;
         return $this->db->query($Sql);
     }
